@@ -1,0 +1,605 @@
+/* style.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+/* --- HEADER STYLES --- */
+header {
+    background-color: #000; /* Nền đen */
+    color: white; /* Chữ trắng */
+    padding: 1rem 0;
+    position: relative; /* Quan trọng: để dropdown có thể định vị tuyệt đối so với header */
+    z-index: 100; /* Đảm bảo header nằm trên các nội dung khác */
+}
+
+header .container {
+    display: flex; /* Dùng flexbox để sắp xếp ngang hàng */
+    justify-content: space-between; /* Đặt logo ở giữa, icon ở cuối */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    flex-wrap: wrap; /* Cho phép các mục xuống dòng trên màn hình nhỏ */
+}
+
+/* Ẩn h1 nếu bạn đã thay thế bằng ảnh. Nếu không dùng ảnh, bỏ dòng này */
+header h1 {
+    display: none;
+}
+
+/* Ẩn logo ảnh cũ (nếu bạn vẫn giữ thẻ <img> trong HTML ban đầu) */
+.header-logo {
+    display: none;
+}
+
+/* Các kiểu cho logo có ảnh và chữ */
+.header-text-logo {
+    display: flex; /* Sử dụng flexbox để xếp ảnh và chữ cạnh nhau */
+    align-items: center; /* Căn chỉnh ảnh và chữ theo chiều dọc */
+    flex-grow: 1; /* Cho phép logo mở rộng để chiếm không gian trống */
+    padding: 5px 0; /* Thêm một chút padding nếu cần */
+}
+
+.header-logo-image {
+    height: 100px; /* Điều chỉnh chiều cao của logo theo ý muốn */
+    margin-right: 10px; /* Tạo khoảng cách giữa ảnh và chữ */
+    display: inline-block; /* Đảm bảo nó nằm trên cùng dòng với chữ */
+}
+
+.logo-text-group {
+    display: flex;
+    flex-direction: column; /* Xếp dòng chính và tagline theo chiều dọc */
+}
+
+/* Thêm keyframes cho hiệu ứng nhấp nháy 7 màu */
+@keyframes rainbow-flash {
+    0%   { color: #FF0000; } /* Đỏ */
+    14%  { color: #FF7F00; } /* Cam */
+    28%  { color: #FFFF00; } /* Vàng */
+    42%  { color: #00FF00; } /* Xanh lá */
+    57%  { color: #0000FF; } /* Xanh dương */
+    71%  { color: #4B0082; } /* Chàm */
+    85%  { color: #9400D3; } /* Tím */
+    100% { color: #FF0000; } /* Quay lại Đỏ */
+}
+
+.header-text-logo .main-logo-text {
+    display: block;
+    font-size: 2.2em;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    white-space: nowrap;
+
+    /* Áp dụng animation nhấp nháy 7 màu */
+    animation: rainbow-flash 4s infinite linear; /* 4s: thời gian hoàn thành 1 chu kỳ, infinite: lặp vô hạn, linear: chuyển động đều */
+}
+
+.header-text-logo .tagline-text {
+    display: block;
+    font-size: 0.9em;
+    color: yellow; /* Đặt màu chữ là vàng */
+    margin-top: 3px;
+    letter-spacing: 0.8px;
+    white-space: nowrap;
+}
+
+/* Kiểu cho biểu tượng menu hamburger (3 gạch) */
+#hamburger-menu-icon {
+    width: 30px; /* Chiều rộng tổng thể của icon */
+    height: 25px; /* Chiều cao tổng thể của icon */
+    position: relative; /* Dùng cho vị trí tuyệt đối của các gạch */
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around; /* Khoảng cách đều giữa các gạch */
+    align-items: center;
+    padding: 5px; /* Thêm padding để dễ click hơn */
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    z-index: 100; /* Đảm bảo nó luôn ở trên cùng */
+    order: 2; /* Đảm bảo nó luôn ở cuối bên phải trong flex container */
+    margin-left: auto; /* Đẩy icon sang phải */
+}
+
+#hamburger-menu-icon:hover {
+    background-color: #333;
+}
+
+.bar {
+    display: block; /* Mỗi gạch là một khối */
+    width: 100%; /* Chiều rộng của gạch */
+    height: 3px; /* Chiều cao của gạch */
+    background-color: white; /* Màu của gạch */
+    border-radius: 2px;
+    transition: all 0.3s ease-in-out; /* Hiệu ứng chuyển động */
+}
+
+/* Styles cho menu thả xuống */
+#user-dropdown-menu {
+    position: absolute; /* Định vị tuyệt đối so với header */
+    top: 100%; /* Ngay dưới header */
+    right: 5%; /* Căn chỉnh với biểu tượng hamburger */
+    background-color: #333; /* Màu nền của menu */
+    min-width: 180px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+    z-index: 99; /* Dưới hamburger nhưng trên nội dung khác */
+    border-radius: 0 0 8px 8px; /* Bo góc dưới */
+    overflow: hidden; /* Đảm bảo nội dung không tràn ra ngoài */
+    padding: 5px 0; /* Thêm padding trên và dưới */
+}
+
+.dropdown-item {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    font-size: 0.95em;
+    white-space: nowrap; /* Đảm bảo text không bị xuống dòng */
+}
+
+.dropdown-item:hover {
+    background-color: #555;
+}
+
+/* -- MAIN CONTENT SECTIONS -- */
+main {
+    padding: 20px 0;
+}
+
+section {
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* -- CATEGORY GRID -- */
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    text-align: center;
+}
+
+.category-item {
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    transition: transform 0.2s ease-in-out;
+}
+
+.category-item:hover {
+    transform: translateY(-5px);
+}
+
+.category-item img {
+    width: 100%; /* Đảm bảo ảnh lấp đầy chiều rộng của khung */
+    height: 150px; /* Đặt chiều cao cố định cho ảnh danh mục */
+    object-fit: contain; /* Đảm bảo ảnh hiển thị toàn bộ, có thể có khoảng trắng */
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.category-item h3 {
+    margin-top: 0;
+    color: #333;
+}
+
+.view-products-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+.view-products-btn:hover {
+    background-color: #0056b3;
+}
+
+/* -- PRODUCT GRID -- */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.product-item {
+    border: 1px solid #eee;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    background-color: #fcfcfc;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.product-item img {
+    width: 100%; /* Đảm bảo ảnh lấp đầy chiều rộng của khung */
+    height: 180px; /* Giữ nguyên chiều cao cố định cho ảnh sản phẩm */
+    object-fit: contain; /* Đảm bảo ảnh hiển thị toàn bộ, có thể có khoảng trắng */
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.product-item h3 {
+    margin-top: 0;
+    color: #444;
+}
+
+.product-item .product-code {
+    font-size: 0.85em;
+    color: #777;
+    margin-bottom: 5px;
+}
+
+.product-item .display-price {
+    font-weight: bold;
+    color: #e44d26;
+    font-size: 1.1em;
+    margin: 10px 0;
+}
+
+.product-item .size-price-label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 0.9em;
+    color: #555;
+}
+
+.product-item .size-price-select {
+    width: calc(100% - 20px);
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: white;
+    font-size: 0.9em;
+}
+
+.buy-now-btn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+.buy-now-btn:hover {
+    background-color: #218838;
+}
+
+/* -- CART SUMMARY (hidden by default) -- */
+#cart-summary {
+    display: none; /* Giữ hidden */
+}
+
+/* -- DEPOSIT SECTION -- */
+.bank-info {
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    margin-top: 20px;
+    text-align: left;
+}
+
+.bank-info p {
+    margin: 8px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.bank-info p strong {
+    flex-basis: 30%;
+    min-width: 100px;
+}
+
+.bank-info p span {
+    flex-grow: 1;
+    text-align: right;
+    font-weight: bold;
+    color: #007bff;
+    margin-right: 10px;
+    word-break: break-all;
+}
+
+.bank-info .copy-btn {
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85em;
+    transition: background-color 0.3s ease;
+    flex-shrink: 0;
+}
+
+.bank-info .copy-btn:hover {
+    background-color: #5a6268;
+}
+
+.ok-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    display: block;
+    width: 100%;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.ok-button:hover {
+    background-color: #0056b3;
+}
+
+/* --- AUTH FORMS (Login, Register) & OVERLAY --- */
+.auth-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Nền mờ */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 200; /* Đảm bảo nằm trên tất cả */
+    animation: fadeIn 0.3s ease-out forwards;
+}
+
+.auth-form-container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    width: 90%;
+    max-width: 400px;
+    position: relative; /* Cho nút đóng */
+    animation: slideIn 0.3s ease-out forwards;
+}
+
+.auth-form-container h2 {
+    text-align: center;
+    margin-top: 0;
+    color: #333;
+    margin-bottom: 25px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #555;
+}
+
+.form-group input[type="text"],
+.form-group input[type="password"],
+.form-group input[type="email"] {
+    width: calc(100% - 20px); /* Kích thước trừ padding */
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1em;
+    box-sizing: border-box; /* Đảm bảo padding không làm tăng width */
+}
+
+.auth-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    width: 100%;
+    margin-top: 15px;
+    transition: background-color 0.3s ease;
+}
+
+.auth-button:hover {
+    background-color: #0056b3;
+}
+
+.auth-form-container p {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.9em;
+    color: #666;
+}
+
+.auth-form-container p a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.auth-form-container p a:hover {
+    text-decoration: underline;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 2em;
+    color: #aaa;
+    cursor: pointer;
+    padding: 5px;
+    line-height: 1;
+    transition: color 0.2s ease;
+}
+
+.close-btn:hover {
+    color: #333;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* Account Info Section */
+#account-info-section h3 {
+    margin-top: 30px;
+    color: #333;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+#purchase-history-list {
+    background-color: #f9f9f9;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    padding: 15px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.history-item {
+    border-bottom: 1px dashed #e0e0e0;
+    padding: 10px 0;
+    font-size: 0.95em;
+    color: #555;
+}
+
+.history-item:last-child {
+    border-bottom: none;
+}
+
+.history-item strong {
+    color: #333;
+}
+
+.history-item .date {
+    font-size: 0.85em;
+    color: #888;
+    display: block;
+    margin-top: 5px;
+}
+
+/* -- RESPONSIVE DESIGN -- */
+@media (max-width: 768px) {
+    header .container {
+        flex-direction: row; /* Giữ icon và tiêu đề trên cùng một hàng trên mobile */
+        justify-content: space-between; /* Icon ở một bên, tiêu đề ở giữa */
+        padding: 10px;
+    }
+
+    /* Điều chỉnh logo có ảnh và chữ trên mobile */
+    .header-logo-image {
+        height: 30px; /* Điều chỉnh kích thước logo nhỏ hơn trên mobile */
+        margin-right: 8px;
+    }
+    .header-text-logo .main-logo-text {
+        font-size: 1.6em; /* Điều chỉnh kích thước chữ nhỏ hơn trên mobile */
+        white-space: normal; /* Cho phép chữ xuống dòng */
+        /* Animation vẫn được giữ nguyên */
+    }
+    .header-text-logo .tagline-text {
+        font-size: 0.7em; /* Điều chỉnh kích thước chữ nhỏ hơn nữa */
+        white-space: normal; /* Cho phép chữ xuống dòng */
+    }
+
+
+    #hamburger-menu-icon {
+        order: unset; /* Trả lại thứ tự bình thường */
+        margin-left: 0; /* Đảm bảo không có margin thừa */
+    }
+
+    /* Điều chỉnh vị trí dropdown trên màn hình nhỏ */
+    #user-dropdown-menu {
+        right: 2%; /* Điều chỉnh lại vị trí */
+        min-width: unset; /* Loại bỏ min-width cứng nhắc */
+        width: 96%; /* Chiếm gần hết chiều rộng màn hình */
+        top: 60px; /* Điều chỉnh vị trí nếu cần thiết */
+        left: 2%; /* Căn giữa trên màn hình nhỏ */
+        border-radius: 8px; /* Bo góc đầy đủ hơn */
+    }
+
+    .container {
+        width: 95%;
+    }
+    .categories-grid {
+        grid-template-columns: 1fr;
+    }
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Adjust for smaller screens for bank info */
+    .bank-info p {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .bank-info p strong {
+        flex-basis: 30%;
+        min-width: 100px;
+    }
+    .bank-info p span {
+        text-align: left;
+        margin-right: 0;
+        margin-top: 5px;
+    }
+    .bank-info .copy-btn {
+        width: 100%;
+        margin-top: 10px;
+    }
+    /* Điều chỉnh form đăng nhập/đăng ký trên màn hình nhỏ */
+    .auth-form-container {
+        width: 95%;
+        padding: 20px;
+    }
+}
+
+/* -- FOOTER -- */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: 30px;
+}

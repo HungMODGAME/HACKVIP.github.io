@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Mua Sắm Online</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-text-logo">
+                <img src="https://i.imgur.com/NBGQqok.jpeg" alt="Logo" class="header-logo-image">
+                <div class="logo-text-group">
+                    <span class="main-logo-text">LUXURY MONKEY</span>
+                    <span class="tagline-text">Hack Mod Đẳng Cấp</span>
+                </div>
+            </div>
+            <div id="hamburger-menu-icon">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <div id="user-dropdown-menu" class="hidden">
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="home">
+            <h2>DANH SÁCH GAME HACK ( IOS / ANDROID ) </h2>
+            <div class="categories-grid">
+                <div class="category-item" data-category="clothing">
+                    <img src="https://i.imgur.com/qI8YIZC.jpeg" alt="Thời trang">
+                    <h3>HACK MAP LIÊN QUÂN IOS / ADR</h3>
+                    <button class="view-products-btn">Xem sản phẩm</button>
+                </div>
+                <div class="category-item" data-category="electronics">
+                    <img src="https://i.imgur.com/TW2XXDW.jpeg" alt="Điện tử">
+                    <h3>PUBG</h3>
+                    <button class="view-products-btn">Xem sản phẩm</button>
+                </div>
+                <div class="category-item" data-category="books">
+                    <img src="https://i.imgur.com/5bHsrVx.jpeg" alt="Sách">
+                    <h3>PLAY TOGETHER</h3>
+                    <button class="view-products-btn">Xem sản phẩm</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="products-section" class="hidden">
+            <h2>HACK IOS/ADR</h2>
+            <div id="product-list" class="product-grid">
+            </div>
+        </section>
+
+        <section id="cart-summary" class="hidden">
+            <h2>Giỏ hàng của bạn</h2>
+            <ul id="cart-items">
+            </ul>
+            <p>Tổng cộng: <span id="cart-total">0 VNĐ</span></p>
+            <button id="checkout-btn">Thanh toán</button>
+        </section>
+
+        <section id="deposit-section" class="hidden auth-form-container">
+            <h2>Thông tin thanh toán</h2>
+            <p>Vui lòng chuyển khoản vào thông tin dưới đây để xác nhận đơn hàng.</p>
+            <div class="bank-info">
+                <p><strong>Ngân hàng:</strong> <span id="bank-name">MB BANK</span> <button class="copy-btn" data-target="bank-name">Sao chép</button></p>
+                <p><strong>Số tài khoản:</strong> <span id="account-number">0346593904</span> <button class="copy-btn" data-target="account-number">Sao chép</button></p>
+                <p><strong>Chủ tài khoản:</strong> <span id="account-holder">HOANG VAN HUNG</span> <button class="copy-btn" data-target="account-holder">Sao chép</button></p>
+                <p><strong>Nội dung chuyển khoản:</strong> <span id="transfer-content">THANHTOAN_[Mã_đơn_hàng]</span> <button class="copy-btn" data-target="transfer-content">Sao chép</button></p>
+            </div>
+            <p>Sau khi chuyển khoản hãy chụp lại bill và quay lại trang sau đó bạn có thể bấm "OK" .</p>
+            <button id="deposit-ok-btn" class="ok-button">OK</button>
+        </section>
+
+        <div id="auth-overlay" class="auth-overlay hidden">
+            <div id="login-form" class="auth-form-container hidden">
+                <button class="close-btn">&times;</button>
+                <h2>Đăng nhập</h2>
+                <form id="login-user-form">
+                    <div class="form-group">
+                        <label for="login-username">Tên đăng nhập:</label>
+                        <input type="text" id="login-username" name="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Mật khẩu:</label>
+                        <input type="password" id="login-password" name="password" required>
+                    </div>
+                    <button type="submit" class="auth-button">Đăng nhập</button>
+                    <p>Chưa có tài khoản? <a href="#" id="show-register">Đăng ký ngay</a></p>
+                </form>
+            </div>
+
+            <div id="register-form" class="auth-form-container hidden">
+                <button class="close-btn">&times;</button>
+                <h2>Đăng ký</h2>
+                <form id="register-user-form">
+                    <div class="form-group">
+                        <label for="register-username">Tên đăng nhập:</label>
+                        <input type="text" id="register-username" name="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-password">Mật khẩu:</label>
+                        <input type="password" id="register-password" name="password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-confirm-password">Xác nhận mật khẩu:</label>
+                        <input type="password" id="register-confirm-password" name="confirm-password" required>
+                    </div>
+                    <button type="submit" class="auth-button">Đăng ký</button>
+                    <p>Đã có tài khoản? <a href="#" id="show-login">Đăng nhập</a></p>
+                </form>
+            </div>
+        </div>
+
+        <section id="account-info-section" class="hidden">
+            <h2>Tài khoản của tôi</h2>
+            <p>Chào mừng, <strong id="account-username"></strong>!</p>
+            <h3>Lịch sử mua hàng</h3>
+            <div id="purchase-history-list">
+                <p>Bạn chưa có giao dịch nào.</p>
+            </div>
+            <button id="logout-btn" class="buy-now-btn">Đăng xuất</button>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; Dịch Vụ HACK GAME VIP</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
