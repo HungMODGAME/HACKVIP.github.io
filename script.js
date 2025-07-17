@@ -189,8 +189,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 { price: 20000, label: '20,000đ /1 ngày' },
                 { price: 60000, label: '60,000đ /1 tuần' },
                 { price: 160000, label: '160,000đ /1 tháng' },
-                { price: 259000, label: '259,000đ /2 tháng/ 1key said được 2 máy' },
-                { price: 360000, label: '360,000đ /3 tháng/ 1key said được 2 máy' },
+                { price: 259000, label: '259,000đ /2 tháng/ 1key sài được 2 máy' },
+                { price: 360000, label: '360,000đ /3 tháng/ 1key sài được 2 máy' },
             ]
         },
         {
