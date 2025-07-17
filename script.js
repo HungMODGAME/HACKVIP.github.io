@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
             productCode: 'IOS-VIP',
             variations: [
                 { price: 299000, label: '299,000đ / 1tháng xóa tố nemu, auto múa flo, aim all tướng,...' },
-                { price: 360000, label: '360,000đ / 1tháng / key chơi đưuọc 3 game LQ xóa tố + PUBG + Tốc Chiến' },
+                { price: 360000, label: '360,000đ / 1tháng / key chơi được 3 game LQ xóa tố + PUBG + Tốc Chiến' },
             ]
         },
         {
