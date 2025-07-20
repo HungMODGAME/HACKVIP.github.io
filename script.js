@@ -31,13 +31,27 @@ document.addEventListener('DOMContentLoaded', () => {
     const logoutBtn = document.getElementById('logout-btn');
     const closeFormButtons = document.querySelectorAll('.auth-form-container .close-btn');
 
+    // === KHAI BÁO CÁC PHẦN TỬ DOM MỚI CHO THÔNG BÁO ===
+    const discountModalOverlay = document.getElementById('discount-modal-overlay');
+    const discountCodeSpan = document.getElementById('discount-code');
+    const copyDiscountCodeBtn = document.getElementById('copy-discount-code');
+    const closeModalBtn = document.querySelector('.close-modal-btn');
+
+    // === KHAI BÁO CÁC PHẦN TỬ DOM MỚI CHO NHẬP MÃ GIẢM GIÁ TRÊN TRANG CHỦ ===
+    const discountCodeInput = document.getElementById('discount-code-input');
+    const applyDiscountBtn = document.getElementById('apply-discount-btn');
+    const discountMessage = document.getElementById('discount-message');
+
+
     // === BIẾN TRẠNG THÁI ===
     let lastOrderDetailsForCopy = null;
     let currentCategory = 'all';
     let isLoggedIn = false;
     let currentUser = null; // { username: "...", password: "...", purchaseHistory: [] }
+    let appliedDiscountCode = null; // Biến để lưu mã giảm giá đã áp dụng
 
-    // === DỮ LIỆU SẢN PHẨM ===
+    // --- DỮ LIỆU SẢN PHẨM ---
+    // Các giá sản phẩm đã được tăng thêm 5.000.000 VNĐ
     const products = [
         {
             id: 1,
@@ -46,8 +60,8 @@ document.addEventListener('DOMContentLoaded', () => {
             image: 'https://i.imgur.com/o6wwhWq.jpeg',
             productCode: 'IOS-VIP',
             variations: [
-                { price: 299000, label: '299,000đ / 1tháng xóa tố nemu, auto múa flo, aim all tướng,...' },
-                { price: 360000, label: '360,000đ / 1tháng / key chơi được 3 game LQ xóa tố + PUBG + Tốc Chiến' },
+                { price: 5299000, label: '5,299,000đ / 1tháng xóa tố nemu, auto múa flo, aim all tướng,...' },
+                { price: 5360000, label: '5,360,000đ / 1tháng / key chơi được 3 game LQ xóa tố + PUBG + Tốc Chiến' },
             ]
         },
         {
@@ -57,9 +71,9 @@ document.addEventListener('DOMContentLoaded', () => {
             image: 'https://i.imgur.com/9v2Q4Rm.jpeg',
             productCode: 'IOS-THƯỜNG',
             variations: [
-                { price: 18000, label: '18,000đ /2giờ / đánh kín' },
-                { price: 109000, label: '109,000đ /1 tuần' },
-                { price: 209000, label: '209,000đ /1 tháng' },
+                { price: 5018000, label: '5,018,000đ /2giờ / đánh kín' },
+                { price: 5109000, label: '5,109,000đ /1 tuần' },
+                { price: 5209000, label: '5,209,000đ /1 tháng' },
             ]
         },
         {
@@ -69,9 +83,9 @@ document.addEventListener('DOMContentLoaded', () => {
             image: 'https://i.imgur.com/JbmBgN5.jpeg',
             productCode: 'ADR-VIP1',
             variations: [
-                { price: 60000, label: '60,000đ /1 ngày' },
-                { price: 260000, label: '260,000đ /7 ngày' },
-                { price: 600000, label: '600,000đ /30 ngày' },
+                { price: 5060000, label: '5,060,000đ /1 ngày' },
+                { price: 5260000, label: '5,260,000đ /7 ngày' },
+                { price: 5600000, label: '5,600,000đ /30 ngày' },
             ]
         },
         {
@@ -81,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
             image: 'https://i.imgur.com/yFuHsVg.jpeg',
             productCode: 'ADR-VIP2',
             variations: [
-                { price: 360000, label: '360,000đ / tháng + 7 ngày' },
+                { price: 5360000, label: '5,360,000đ / tháng + 7 ngày' },
             ]
         },
         {
@@ -91,8 +105,8 @@ document.addEventListener('DOMContentLoaded', () => {
             image: 'https://i.imgur.com/BV4wmGX.jpeg',
             productCode: 'ADR-THƯỜNG',
             variations: [
-                { price: 45000, label: '45,000đ /1 ngày' },
-                { price: 260000, label: '260,000đ /1 tháng' },
+                { price: 5045000, label: '5,045,000đ /1 ngày' },
+                { price: 5260000, label: '5,260,000đ /1 tháng' },
             ]
         },
         {
@@ -102,7 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
             image: 'https://i.imgur.com/IEkz22M.jpeg',
             productCode: 'ACC RANDOM',
             variations: [
-                { price: 110000, label: '110,000đ /ACC FB Rank' },
+                { price: 5110000, label: '5,110,000đ /ACC FB Rank' },
             ]
         },
         {
@@ -112,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
             image: 'https://i.imgur.com/4QgWknM.jpeg',
             productCode: 'IOS-VIP1',
             variations: [
-                { price: 1210000, label: '1,210,000đ /1 Mùa/2 Tháng ( máy JB 16.6.1 đổ xuống thì bản này là vua cân Acc VIP )' },
+                { price: 6210000, label: '6,210,000đ /1 Mùa/2 Tháng ( máy JB 16.6.1 đổ xuống thì bản này là vua cân Acc VIP )' },
             ]
         },
         {
@@ -122,21 +136,21 @@ document.addEventListener('DOMContentLoaded', () => {
             image: 'https://i.imgur.com/vc7GgRe.jpeg',
             productCode: 'IOS-VIP2',
             variations: [
-                { price: 25000, label: '25,000đ /2 giờ' },
-                { price: 260000, label: '260,000đ /1 tuần' },
-                { price: 510000, label: '510,000đ /1 tháng' },
+                { price: 5025000, label: '5,025,000đ /2 giờ' },
+                { price: 5260000, label: '5,260,000đ /1 tuần' },
+                { price: 5510000, label: '5,510,000đ /1 tháng' },
             ]
         },
         {
             id: 9,
             name: '[IOS - NONJB] HACK PUBG MOBILE DARCUMA',
             category: 'electronics',
-            image: 'https://i.imgur.com/s2tLoMU.jpeg',
+            image: 'https://i.imgur.com/l2joGkz.jpeg',
             productCode: 'IOS-HOC SINH',
             variations: [
-                { price: 19000, label: '19,000đ /1 giờ' },
-                { price: 209000, label: '209,000đ /1 tuần' },
-                { price: 400000, label: '400,000đ /1 tháng' },
+                { price: 5019000, label: '5,019,000đ /1 giờ' },
+                { price: 5209000, label: '5,209,000đ /1 tuần' },
+                { price: 5400000, label: '5,400,000đ /1 tháng' },
             ]
         },
         {
@@ -146,11 +160,11 @@ document.addEventListener('DOMContentLoaded', () => {
             image: 'https://i.imgur.com/KnpNuYu.jpeg',
             productCode: 'ADR-VIP VUA',
             variations: [
-                { price: 45000, label: '45,000đ /1 ngày' },
-                { price: 160000, label: '160,000đ /1 tuần' },
-                { price: 360000, label: '360,000đ /1 tháng' },
-                { price: 600000, label: '600,000đ /1 tháng + Anti xóa tố safe 100%, chống quét off...' },
-                { price: 800000, label: '800,000đ /2 tháng + Anti xóa tố safe 100%, chống quét off...' },
+                { price: 5045000, label: '5,045,000đ /1 ngày' },
+                { price: 5160000, label: '5,160,000đ /1 tuần' },
+                { price: 5360000, label: '5,360,000đ /1 tháng' },
+                { price: 5600000, label: '5,600,000đ /1 tháng + Anti xóa tố safe 100%, chống quét off...' },
+                { price: 5800000, label: '5,800,000đ /2 tháng + Anti xóa tố safe 100%, chống quét off...' },
             ]
         },
         {
@@ -160,11 +174,11 @@ document.addEventListener('DOMContentLoaded', () => {
             image: 'https://i.imgur.com/DjKa1fP.jpeg',
             productCode: 'ADR-SINH VIÊN',
             variations: [
-                { price: 18000, label: '18,000đ /5 giờ' },
-                { price: 24000, label: '24,000đ /1 ngày' },
-                { price: 69000, label: '69,000đ /1 tuần' },
-                { price: 290000, label: '290,000đ /1 tháng' },
-                { price: 1000000, label: '1,000,000đ /5 tháng' },
+                { price: 5018000, label: '5,018,000đ /5 giờ' },
+                { price: 5024000, label: '5,024,000đ /1 ngày' },
+                { price: 5069000, label: '5,069,000đ /1 tuần' },
+                { price: 5290000, label: '5,290,000đ /1 tháng' },
+                { price: 6000000, label: '6,000,000đ /5 tháng' },
             ]
         },
         {
@@ -174,8 +188,8 @@ document.addEventListener('DOMContentLoaded', () => {
             image: 'https://i.imgur.com/SyfXA17.jpeg',
             productCode: 'ADR-HỌC SINH',
             variations: [
-                { price: 200000, label: '200,000đ /1 tháng' },
-                { price: 300000, label: '300,000đ /1 Mùa /60 ngày' },
+                { price: 5200000, label: '5,200,000đ /1 tháng' },
+                { price: 5300000, label: '5,300,000đ /1 Mùa /60 ngày' },
             ]
         },
         {
@@ -185,12 +199,12 @@ document.addEventListener('DOMContentLoaded', () => {
             image: 'https://i.imgur.com/izyb7u9.jpeg',
             productCode: 'ADR',
             variations: [
-                { price: 13000, label: '13,000đ /2 giờ' },
-                { price: 20000, label: '20,000đ /1 ngày' },
-                { price: 60000, label: '60,000đ /1 tuần' },
-                { price: 160000, label: '160,000đ /1 tháng' },
-                { price: 259000, label: '259,000đ /2 tháng/ 1key sài được 2 máy' },
-                { price: 360000, label: '360,000đ /3 tháng/ 1key sài được 2 máy' },
+                { price: 5013000, label: '5,013,000đ /2 giờ' },
+                { price: 5020000, label: '5,020,000đ /1 ngày' },
+                { price: 5060000, label: '5,060,000đ /1 tuần' },
+                { price: 5160000, label: '5,160,000đ /1 tháng' },
+                { price: 5259000, label: '5,259,000đ /2 tháng/ 1key sài được 2 máy' },
+                { price: 5360000, label: '5,360,000đ /3 tháng/ 1key sài được 2 máy' },
             ]
         },
         {
@@ -200,12 +214,22 @@ document.addEventListener('DOMContentLoaded', () => {
             image: 'https://i.imgur.com/3N1jHqe.jpeg',
             productCode: 'ADR',
             variations: [
-                { price: 130000, label: '130,000đ /1 tuần' },
-                { price: 290000, label: '290,000đ /1 tháng' },
-                { price: 600000, label: '600,000đ /10 tháng' },
+                { price: 5130000, label: '5,130,000đ /1 tuần' },
+                { price: 5290000, label: '5,290,000đ /1 tháng' },
+                { price: 5600000, label: '5,600,000đ /10 tháng' },
             ]
         },
     ];
+
+    // --- ĐỊNH NGHĨA MÃ GIẢM GIÁ VÀ GIÁ TRỊ GIẢM ---
+    // **BẠN CÓ THỂ THAY ĐỔI MÃ GIẢM GIÁ, LOẠI VÀ GIÁ TRỊ TẠI ĐÂY!**
+    const validDiscountCodes = {
+        'JACK5CU': { type: 'fixed', value: 5000000, message: 'Bạn được giảm 5,000,000đ cho đơn hàng!' },
+        // Thêm các mã giảm giá khác nếu cần, ví dụ:
+        // 'NEWMEMBER20': { type: 'percentage', value: 0.20, message: 'Giảm 20% cho thành viên mới!' },
+        // 'FREESHIP': { type: 'fixed', value: 30000, message: 'Miễn phí vận chuyển 30,000đ!' },
+    };
+
 
     // === HÀM TIỆN ÍCH ===
     function formatVND(amount) {
@@ -216,11 +240,12 @@ document.addEventListener('DOMContentLoaded', () => {
         homeSection && homeSection.classList.add('hidden');
         productsSection && productsSection.classList.add('hidden');
         depositSection && depositSection.classList.add('hidden');
-        accountInfoSection && accountInfoSection.classList.add('hidden'); // Ẩn phần tài khoản
-        authOverlay && authOverlay.classList.add('hidden'); // Ẩn overlay và các form
+        accountInfoSection && accountInfoSection.classList.add('hidden');
+        authOverlay && authOverlay.classList.add('hidden');
         loginForm && loginForm.classList.add('hidden');
         registerForm && registerForm.classList.add('hidden');
-        userDropdownMenu && userDropdownMenu.classList.add('hidden'); // Đóng menu dropdown
+        userDropdownMenu && userDropdownMenu.classList.add('hidden');
+        discountModalOverlay && discountModalOverlay.classList.add('hidden');
     }
 
     function showSection(sectionElement, sectionName, pushState = true) {
@@ -374,7 +399,6 @@ document.addEventListener('DOMContentLoaded', () => {
             accountUsernameSpan.textContent = currentUser.username;
             purchaseHistoryList.innerHTML = '';
             if (currentUser.purchaseHistory && currentUser.purchaseHistory.length > 0) {
-                // Sắp xếp lịch sử mua hàng từ mới nhất đến cũ nhất
                 const sortedHistory = [...currentUser.purchaseHistory].sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
 
                 sortedHistory.forEach(order => {
@@ -405,6 +429,12 @@ document.addEventListener('DOMContentLoaded', () => {
         productList.innerHTML = '';
         const filteredProducts = products.filter(product => {
             return (currentCategory === 'all' || product.category === currentCategory);
+        }).map(product => {
+            if (!product.variations && product.variances) { // Fallback cho lỗi chính tả cũ
+                product.variations = product.variances;
+                delete product.variances;
+            }
+            return product;
         });
 
         if (filteredProducts.length === 0) {
@@ -417,11 +447,16 @@ document.addEventListener('DOMContentLoaded', () => {
             productItem.classList.add('product-item');
 
             let selectOptionsHtml = '';
-            product.variations.forEach((variant, index) => {
-                selectOptionsHtml += `<option value="${index}">${variant.label}</option>`;
-            });
+            if (product.variations && product.variations.length > 0) {
+                product.variations.forEach((variant, index) => {
+                    selectOptionsHtml += `<option value="${index}">${variant.label}</option>`;
+                });
+            } else {
+                selectOptionsHtml += `<option value="0">Không có gói nào</option>`;
+            }
 
-            const defaultPrice = product.variations[0].price;
+
+            const defaultPrice = (product.variations && product.variations.length > 0) ? product.variations[0].price : 0;
 
             productItem.innerHTML = `
                 <div class="product-code">${product.productCode}</div>
@@ -452,7 +487,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const selectedVariantIndex = parseInt(selectElement.value);
 
         const product = products.find(p => p.id === productId);
-        if (product && product.variations[selectedVariantIndex]) {
+        if (product && product.variations && product.variations[selectedVariantIndex]) {
             const newPrice = product.variations[selectedVariantIndex].price;
             const displayPriceElement = selectElement.closest('.product-item').querySelector('.display-price');
             displayPriceElement && (displayPriceElement.textContent = formatVND(newPrice));
@@ -475,21 +510,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const product = products.find(p => p.id === productId);
 
-        if (product && product.variations[selectedVariantIndex]) {
+        if (product && product.variations && product.variations[selectedVariantIndex]) {
             const selectedVariant = product.variations[selectedVariantIndex];
+            let totalAmount = selectedVariant.price * 1; // Khởi tạo tổng tiền
+
+            // Áp dụng mã giảm giá nếu có
+            if (appliedDiscountCode) {
+                const discount = validDiscountCodes[appliedDiscountCode];
+                if (discount) {
+                    if (discount.type === 'percentage') {
+                        totalAmount -= totalAmount * discount.value;
+                    } else if (discount.type === 'fixed') {
+                        totalAmount -= discount.value;
+                        if (totalAmount < 0) totalAmount = 0; // Đảm bảo tổng tiền không âm
+                    }
+                    alert(`Mã giảm giá "${appliedDiscountCode}" đã được áp dụng cho đơn hàng của bạn! Giá cuối cùng: ${formatVND(totalAmount)}`);
+                }
+            }
+
             const orderItem = {
                 id: product.id,
                 name: product.name,
                 variantLabel: selectedVariant.label,
-                price: selectedVariant.price,
+                price: selectedVariant.price, // Giá gốc
+                finalPrice: totalAmount, // Giá cuối cùng sau giảm giá
                 quantity: 1,
                 image: product.image,
-                productCode: product.productCode // Đảm bảo productCode có sẵn ở đây
+                productCode: product.productCode
             };
 
-            const totalAmount = orderItem.price * orderItem.quantity;
             const orderId = Date.now().toString().slice(-6);
-            // SỬA ĐỔI TẠI ĐÂY: nội dung chuyển khoản thành DAMUA + mã sản phẩm
             const transferText = `DAMUA_${orderItem.productCode}`;
 
             lastOrderDetailsForCopy = {
@@ -497,13 +547,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 items: [orderItem],
                 total: totalAmount,
                 transferContent: transferText,
-                timestamp: new Date().toISOString() // Lưu thời gian giao dịch
+                timestamp: new Date().toISOString()
             };
 
             showSection(depositSection, 'deposit-section');
             transferContentSpan && (transferContentSpan.textContent = transferText);
 
-            alert(`Đơn hàng của bạn đã được ghi nhận. Vui lòng chuyển khoản để hoàn tất thanh toán. Nội dung chuyển khoản: ${transferText}`);
+            alert(`Đơn hàng của bạn đã được ghi nhận. Vui lòng chuyển khoản để hoàn tất thanh toán. Tổng tiền cần chuyển: ${formatVND(totalAmount)}. Nội dung chuyển khoản: ${transferText}`);
+
+            // === QUAN TRỌNG: ĐỂ MÃ GIẢM GIÁ KHÔNG GIỚI HẠN, BỎ COMMENT (HOẶC XÓA) ĐOẠN DƯỚI NẾU BẠN TỪNG BỎ COMMENT NÓ ===
+            // appliedDiscountCode = null;
+            // if (discountCodeInput) discountCodeInput.value = '';
+            // if (discountMessage) discountMessage.classList.add('hidden');
         }
     }
 
@@ -517,24 +572,22 @@ document.addEventListener('DOMContentLoaded', () => {
                     copyText += `    Mã SP: ${item.productCode || 'N/A'}\n`;
                     copyText += `    Chi tiết: ${item.variantLabel}\n`;
                     copyText += `    Số lượng: ${item.quantity}\n`;
-                    copyText += `    Tổng tiền: ${formatVND(item.price * item.quantity)}\n\n`;
+                    copyText += `    Tổng tiền (sau giảm giá): ${formatVND(item.finalPrice || item.price * item.quantity)}\n\n`;
                 });
                 copyText += `Tổng cộng: ${formatVND(lastOrderDetailsForCopy.total)}\n`;
                 copyText += `Nội dung chuyển khoản: ${lastOrderDetailsForCopy.transferContent}\n\n`;
-                // THÔNG BÁO CẢM ƠN ĐÃ SỬA ĐỔI
                 copyText += `Cảm ơn ${currentUser.username} đã mua HACK!`;
 
                 try {
                     await navigator.clipboard.writeText(copyText);
                     alert('Đã sao chép thông tin đơn hàng vào bộ nhớ tạm!');
 
-                    // Lưu lịch sử mua hàng vào currentUser và localStorage
                     if (currentUser) {
                         currentUser.purchaseHistory.push(lastOrderDetailsForCopy);
                         const users = loadUsers();
                         users[currentUser.username].purchaseHistory = currentUser.purchaseHistory;
                         saveUsers(users);
-                        saveCurrentUser(); // Cập nhật currentUser trong localStorage
+                        saveCurrentUser();
                         console.log('Lịch sử mua hàng đã được lưu:', currentUser.purchaseHistory);
                     }
 
@@ -543,9 +596,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     alert('Có lỗi khi sao chép thông tin đơn hàng. Vui lòng sao chép thủ công.');
                 }
 
-                window.open('https://t.me/buffuytin', '_blank'); // Chuyển hướng đến Telegram
-                showSection(homeSection, 'home'); // Quay lại trang chủ
-                lastOrderDetailsForCopy = null; // Xóa thông tin đã sao chép để tránh sao chép lại đơn cũ
+                window.open('https://t.me/buffuytin', '_blank');
+                showSection(homeSection, 'home');
+                lastOrderDetailsForCopy = null;
             } else {
                 console.warn('Không có thông tin đơn hàng để sao chép.');
                 alert('Không có thông tin đơn hàng mới để sao chép.');
@@ -566,14 +619,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Event listener cho biểu tượng hamburger
     if (hamburgerMenuIcon) {
         hamburgerMenuIcon.addEventListener('click', () => {
             userDropdownMenu && userDropdownMenu.classList.toggle('hidden');
         });
     }
 
-    // Event listeners cho các nút Đóng form
     closeFormButtons.forEach(button => {
         button.addEventListener('click', () => {
             authOverlay.classList.add('hidden');
@@ -582,7 +633,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Event listeners cho chuyển đổi form Đăng nhập/Đăng ký
     if (showLoginBtn) {
         showLoginBtn.addEventListener('click', (e) => {
             e.preventDefault();
@@ -599,7 +649,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Event listener cho form Đăng ký
     if (registerUserForm) {
         registerUserForm.addEventListener('submit', (e) => {
             e.preventDefault();
@@ -615,21 +664,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 alert('Tên đăng nhập phải có ít nhất 3 ký tự và mật khẩu phải có ít nhất 6 ký tự.');
                 return;
             }
-            // THAY ĐỔI MỚI: Kiểm tra dấu cách trong tên đăng nhập
             if (username.includes(' ')) {
                 alert('Tên đăng nhập không được chứa dấu cách.');
                 return;
             }
 
             if (registerUser(username, password)) {
-                e.target.reset(); // Xóa form
-                loginForm.classList.remove('hidden'); // Hiện form đăng nhập
+                e.target.reset();
+                loginForm.classList.remove('hidden');
                 registerForm.classList.add('hidden');
             }
         });
     }
 
-    // Event listener cho form Đăng nhập
     if (loginUserForm) {
         loginUserForm.addEventListener('submit', (e) => {
             e.preventDefault();
@@ -637,13 +684,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const password = e.target.elements['login-password'].value;
 
             if (loginUser(username, password)) {
-                e.target.reset(); // Xóa form
+                e.target.reset();
                 authOverlay.classList.add('hidden');
             }
         });
     }
 
-    // Event listener cho nút Đăng xuất
     if (logoutBtn) {
         logoutBtn.addEventListener('click', logoutUser);
     }
@@ -665,6 +711,62 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // === HÀM HIỂN THỊ VÀ ẨN THÔNG BÁO GIẢM GIÁ (MODAL) ===
+    function showDiscountModal() {
+        if (discountModalOverlay) {
+            discountModalOverlay.classList.remove('hidden');
+        }
+    }
+
+    function hideDiscountModal() {
+        if (discountModalOverlay) {
+            discountModalOverlay.classList.add('hidden');
+        }
+    }
+
+    // === XỬ LÝ SỰ KIỆN CHO THÔNG BÁO MÃ GIẢM GIÁ (MODAL) ===
+    if (copyDiscountCodeBtn) {
+        copyDiscountCodeBtn.addEventListener('click', async () => {
+            if (discountCodeSpan) {
+                const codeToCopy = discountCodeSpan.textContent;
+                try {
+                    await navigator.clipboard.writeText(codeToCopy);
+                    alert(`Đã sao chép mã "${codeToCopy}" vào bộ nhớ tạm!`);
+                    hideDiscountModal();
+                } catch (err) {
+                    console.error('Không thể sao chép mã giảm giá:', err);
+                    alert('Có lỗi khi sao chép mã giảm giá. Vui lòng sao chép thủ công.');
+                }
+            }
+        });
+    }
+
+    if (closeModalBtn) {
+        closeModalBtn.addEventListener('click', hideDiscountModal);
+    }
+
+    // === XỬ LÝ SỰ KIỆN CHO NHẬP MÃ GIẢM GIÁ TRÊN TRANG CHỦ ===
+    if (applyDiscountBtn) {
+        applyDiscountBtn.addEventListener('click', () => {
+            const enteredCode = discountCodeInput.value.trim().toUpperCase();
+            const discount = validDiscountCodes[enteredCode];
+
+            if (discount) {
+                appliedDiscountCode = enteredCode;
+                discountMessage.textContent = `Mã "${enteredCode}" hợp lệ! ${discount.message}`;
+                discountMessage.classList.remove('hidden', 'error');
+                discountMessage.classList.add('success');
+                alert(`Mã giảm giá "${enteredCode}" đã được áp dụng thành công! ${discount.message}`);
+            } else {
+                appliedDiscountCode = null;
+                discountMessage.textContent = 'Mã giảm giá không hợp lệ hoặc đã hết hạn.';
+                discountMessage.classList.remove('hidden', 'success');
+                discountMessage.classList.add('error');
+            }
+        });
+    }
+
 
     // === KHỞI TẠO VÀ XỬ LÝ LỊCH SỬ DUYỆT WEB (NÚT QUAY LẠI TRÌNH DUYỆT) ===
     function navigateToSectionFromHash() {
@@ -697,17 +799,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Khởi tạo UI, tải trạng thái đăng nhập và xử lý hash khi tải trang
-    loadCurrentUser(); // Tải người dùng hiện tại nếu có
-    updateUserUI(); // Cập nhật menu dropdown dựa trên trạng thái đăng nhập
+    loadCurrentUser();
+    updateUserUI();
 
     if (window.location.hash) {
         navigateToSectionFromHash();
     } else {
-        showSection(homeSection, 'home', false); // Hiển thị trang chủ mặc định
+        showSection(homeSection, 'home', false);
     }
 
-    // Xử lý nút quay lại/tiến của trình duyệt
     window.addEventListener('popstate', (event) => {
         navigateToSectionFromHash();
     });
+
+    // Tự động hiển thị thông báo mã giảm giá khi trang tải xong (hoặc sau một khoảng thời gian)
+    setTimeout(() => {
+        showDiscountModal();
+    }, 1000);
 });

@@ -3,16 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dịch Vụ MOD GAME</title>
+    <title>HACK GAME GIÁ RẺ - UY TÍN 2025</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="https://i.imgur.com/gK61a8T.png">
 </head>
 <body>
+
     <header>
         <div class="container">
             <div class="header-text-logo">
-                <img src="https://i.imgur.com/NBGQqok.jpeg" alt="Logo" class="header-logo-image">
+                <img src="https://i.imgur.com/ZeA4iXM.jpeg" alt="Logo Shop" class="header-logo-image">
                 <div class="logo-text-group">
-                    <span class="main-logo-text">LUXURY MONKEY</span>
+                    <span class="main-logo-text">LUXURY MONKEY VIP</span>
                     <span class="tagline-text">Hack Mod Đẳng Cấp</span>
                 </div>
             </div>
@@ -22,116 +24,128 @@
                 <span class="bar"></span>
             </div>
             <div id="user-dropdown-menu" class="hidden">
-            </div>
+                </div>
         </div>
     </header>
 
     <main class="container">
         <section id="home">
-            <h2>DANH SÁCH GAME HACK 🎮 <br>( IOS / ANDROID ) </br></h2>
-            <div class="categories-grid">
+            <h2>Danh Mục Sản Phẩm</h2>
+            <div class="categories-grid" id="categories-grid">
                 <div class="category-item" data-category="clothing">
-                    <img src="https://i.imgur.com/qI8YIZC.jpeg" alt="Thời trang">
-                    <h3>HACK MAP LIÊN QUÂN IOS / ADR</h3>
+                    <img src="https://i.imgur.com/0yWxWyA.jpeg" alt="Hack Liên Quân">
+                    <h3>HACK LIÊN QUÂN</h3>
                     <button class="view-products-btn">Xem sản phẩm</button>
                 </div>
                 <div class="category-item" data-category="electronics">
-                    <img src="https://i.imgur.com/TW2XXDW.jpeg" alt="Điện tử">
-                    <h3>PUBG</h3>
+                    <img src="https://i.imgur.com/2jhKIO2.jpeg" alt="Hack PUBG">
+                    <h3>HACK PUBG</h3>
                     <button class="view-products-btn">Xem sản phẩm</button>
                 </div>
                 <div class="category-item" data-category="books">
-                    <img src="https://i.imgur.com/5bHsrVx.jpeg" alt="Sách">
-                    <h3>PLAY TOGETHER</h3>
+                    <img src="https://i.imgur.com/JPD40Zg.jpeg" alt="Hack Play Together">
+                    <h3>HACK PLAY TOGETHER</h3>
                     <button class="view-products-btn">Xem sản phẩm</button>
                 </div>
+            </div>
+
+            <div class="discount-input-section container">
+                <h2>Bạn có mã giảm giá?</h2>
+                <div class="discount-form-group">
+                    <input type="text" id="discount-code-input" placeholder="Nhập mã giảm giá của bạn">
+                    <button id="apply-discount-btn">Áp dụng</button>
+                </div>
+                <p id="discount-message" class="hidden"></p>
             </div>
         </section>
 
         <section id="products-section" class="hidden">
-            <h2>HACK IOS/ADR</h2>
-            <div id="product-list" class="product-grid">
-            </div>
+            <h2>Sản Phẩm Của Chúng Tôi</h2>
+            <div class="product-grid" id="product-list">
+                </div>
         </section>
 
-        <section id="cart-summary" class="hidden">
-            <h2>Giỏ hàng của bạn</h2>
-            <ul id="cart-items">
-            </ul>
-            <p>Tổng cộng: <span id="cart-total">0 VNĐ</span></p>
-            <button id="checkout-btn">Thanh toán</button>
-        </section>
+        <section id="deposit-section" class="hidden">
+            <h2>Thông Tin Thanh Toán</h2>
+            <p>Vui lòng chuyển khoản đúng số tiền và nội dung để hệ thống xử lý tự động và gửi KEY/file cho bạn.</p>
 
-        <section id="deposit-section" class="hidden auth-form-container">
-            <h2>Thông tin thanh toán</h2>
-            <p>Vui lòng chuyển khoản vào thông tin dưới đây để xác nhận đơn hàng.</p>
             <div class="bank-info">
-                <p><strong>Ngân hàng:</strong> <span id="bank-name">MB BANK</span> <button class="copy-btn" data-target="bank-name">Sao chép</button></p>
-                <p><strong>Số tài khoản:</strong> <span id="account-number">0346593904</span> <button class="copy-btn" data-target="account-number">Sao chép</button></p>
-                <p><strong>Chủ tài khoản:</strong> <span id="account-holder">HOANG VAN HUNG</span> <button class="copy-btn" data-target="account-holder">Sao chép</button></p>
-                <p><strong>Nội dung chuyển khoản:</strong> <span id="transfer-content">THANHTOAN_[Mã_đơn_hàng]</span> <button class="copy-btn" data-target="transfer-content">Sao chép</button></p>
+                <p><strong>Ngân hàng:</strong> <span id="bank-name">MB BANK</span> <button class="copy-btn" data-target="bank-name">Copy</button></p>
+                <p><strong>Số tài khoản:</strong> <span id="bank-account-number">0943960717</span> <button class="copy-btn" data-target="bank-account-number">Copy</button></p>
+                <p><strong>Chủ tài khoản:</strong> <span id="bank-account-name">NGUYEN VAN HAI</span> <button class="copy-btn" data-target="bank-account-name">Copy</button></p>
+                <p><strong>Nội dung chuyển khoản:</strong> <span id="transfer-content"></span> <button class="copy-btn" data-target="transfer-content">Copy</button></p>
             </div>
-            <p>Sau khi chuyển khoản hãy chụp lại bill và quay lại trang sau đó bạn có thể bấm "OK" .</p>
-            <button id="deposit-ok-btn" class="ok-button">OK</button>
+            <p style="margin-top: 20px; font-weight: bold; color: red;">Vui lòng sao chép chính xác nội dung chuyển khoản để đơn hàng được xử lý tự động!</p>
+            <button id="deposit-ok-btn" class="ok-button">Đã chuyển khoản xong, Chuyển đến Telegram nhận hàng</button>
         </section>
-
-        <div id="auth-overlay" class="auth-overlay hidden">
-            <div id="login-form" class="auth-form-container hidden">
-                <button class="close-btn">&times;</button>
-                <h2>Đăng nhập</h2>
-                <form id="login-user-form">
-                    <div class="form-group">
-                        <label for="login-username">Tên đăng nhập:</label>
-                        <input type="text" id="login-username" name="username" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="login-password">Mật khẩu:</label>
-                        <input type="password" id="login-password" name="password" required>
-                    </div>
-                    <button type="submit" class="auth-button">Đăng nhập</button>
-                    <p>Chưa có tài khoản? <a href="#" id="show-register">Đăng ký ngay</a></p>
-                </form>
-            </div>
-
-            <div id="register-form" class="auth-form-container hidden">
-                <button class="close-btn">&times;</button>
-                <h2>Đăng ký</h2>
-                <form id="register-user-form">
-                    <div class="form-group">
-                        <label for="register-username">Tên đăng nhập:</label>
-                        <input type="text" id="register-username" name="username" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="register-password">Mật khẩu:</label>
-                        <input type="password" id="register-password" name="password" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="register-confirm-password">Xác nhận mật khẩu:</label>
-                        <input type="password" id="register-confirm-password" name="confirm-password" required>
-                    </div>
-                    <button type="submit" class="auth-button">Đăng ký</button>
-                    <p>Đã có tài khoản? <a href="#" id="show-login">Đăng nhập</a></p>
-                </form>
-            </div>
-        </div>
 
         <section id="account-info-section" class="hidden">
-            <h2>Tài khoản của tôi</h2>
+            <h2>Thông Tin Tài Khoản</h2>
             <p>Chào mừng, <strong id="account-username"></strong>!</p>
-            <h3>Lịch sử mua hàng</h3>
+
+            <h3>Lịch Sử Giao Dịch</h3>
             <div id="purchase-history-list">
                 <p>Bạn chưa có giao dịch nào.</p>
             </div>
-            <button id="logout-btn" class="buy-now-btn">Đăng xuất</button>
         </section>
-
     </main>
 
     <footer>
         <div class="container">
-            <p>&copy; Dịch Vụ HACK GAME VIP</p>
+            <p>&copy; HACK MOD LUXURY MONKEY VIP</p>
         </div>
     </footer>
+
+    <div id="auth-overlay" class="auth-overlay hidden">
+        <div id="login-form" class="auth-form-container hidden">
+            <button class="close-btn">&times;</button>
+            <h2>Đăng Nhập</h2>
+            <form id="login-user-form">
+                <div class="form-group">
+                    <label for="login-username">Tên đăng nhập:</label>
+                    <input type="text" id="login-username" required autocomplete="username">
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Mật khẩu:</label>
+                    <input type="password" id="login-password" required autocomplete="current-password">
+                </div>
+                <button type="submit" class="auth-button">Đăng Nhập</button>
+            </form>
+            <p>Chưa có tài khoản? <a href="#" id="show-register">Đăng ký ngay</a></p>
+        </div>
+
+        <div id="register-form" class="auth-form-container hidden">
+            <button class="close-btn">&times;</button>
+            <h2>Đăng Ký</h2>
+            <form id="register-user-form">
+                <div class="form-group">
+                    <label for="register-username">Tên đăng nhập:</label>
+                    <input type="text" id="register-username" required autocomplete="username">
+                </div>
+                <div class="form-group">
+                    <label for="register-password">Mật khẩu:</label>
+                    <input type="password" id="register-password" required autocomplete="new-password">
+                </div>
+                <div class="form-group">
+                    <label for="register-confirm-password">Xác nhận mật khẩu:</label>
+                    <input type="password" id="register-confirm-password" required autocomplete="new-password">
+                </div>
+                <button type="submit" class="auth-button">Đăng Ký</button>
+            </form>
+            <p>Đã có tài khoản? <a href="#" id="show-login">Đăng nhập</a></p>
+        </div>
+    </div>
+
+    <div id="discount-modal-overlay" class="modal-overlay hidden">
+        <div class="modal-content">
+            <button class="close-modal-btn">&times;</button>
+            <h2>🎁 Mã Giảm Giá Đặc Biệt! 🎁</h2>
+            <p>Chúc mừng! Bạn đã nhận được mã giảm giá độc quyền cho lần mua hàng đầu tiên!</p>
+            <div class="discount-code-container">
+                <span id="discount-code">JACK5CU</span> <button id="copy-discount-code" class="copy-btn">Sao chép</button>
+            </div>
+            <p class="modal-note">Sử dụng mã này khi thanh toán để được giảm giá 5,000,000đ!</p> </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
