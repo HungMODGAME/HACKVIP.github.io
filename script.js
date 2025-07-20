@@ -224,7 +224,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- ĐỊNH NGHĨA MÃ GIẢM GIÁ VÀ GIÁ TRỊ GIẢM ---
     // **BẠN CÓ THỂ THAY ĐỔI MÃ GIẢM GIÁ, LOẠI VÀ GIÁ TRỊ TẠI ĐÂY!**
     const validDiscountCodes = {
-        'JACK5CU': { type: 'fixed', value: 5000000, message: 'Bạn được giảm 5,000,000đ cho đơn hàng!' },
+        'JACK_RUT_KHONG-KIP': { type: 'fixed', value: 5000000, message: 'Bạn được giảm 5,000,000đ cho đơn hàng!' },
         // Thêm các mã giảm giá khác nếu cần, ví dụ:
         // 'NEWMEMBER20': { type: 'percentage', value: 0.20, message: 'Giảm 20% cho thành viên mới!' },
         // 'FREESHIP': { type: 'fixed', value: 30000, message: 'Miễn phí vận chuyển 30,000đ!' },
