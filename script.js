@@ -316,6 +316,26 @@ document.addEventListener('DOMContentLoaded', () => {
                 { price: 90000, label: '90,000đ' },
             ]
         },
+        {
+            id: 26,
+            name: 'FACEBOOK',
+            category: 'MXH',
+            image: 'https://i.imgur.com/uKFMjw3.png',
+            productCode: 'MXH FACEBOOK',
+            variations: [
+                { price: 0, label: 'ib giá cả và số lượng' },
+            ]
+        },
+        {
+            id: 27,
+            name: 'TIKTOK',
+            category: 'MXH',
+            image: 'https://i.imgur.com/4ijy5tg.png',
+            productCode: 'MXH TIKTOK',
+            variations: [
+                { price: 0, label: 'ib giá cả và số lượng' },
+            ]
+        },
     ];
 
     // === HÀM TIỆN ÍCH ===
