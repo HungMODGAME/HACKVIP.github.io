@@ -240,6 +240,7 @@ document.addEventListener('DOMContentLoaded', () => {
             id: 18,
             name: 'MENU IPA V1',
             category: 'FF',
+            buyNowLink: "https://t.me/FF_IOS_FREE_bot",
             image: 'https://i.imgur.com/ST8ndX1.jpeg',
             productCode: 'IPA FF V1',
             variations: [
@@ -250,6 +251,7 @@ document.addEventListener('DOMContentLoaded', () => {
             id: 19,
             name: 'MENU IPA V2',
             category: 'FF',
+            buyNowLink: "https://t.me/FF_IOS_FREE_bot",
             image: 'https://i.imgur.com/7CQSQO6.jpeg',
             productCode: 'IPA FF V2',
             variations: [
@@ -600,22 +602,32 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function buyNow(event) {
-        if (!isLoggedIn) {
-            alert('Bạn cần đăng nhập để mua sản phẩm.');
-            authOverlay.classList.remove('hidden');
-            loginForm.classList.remove('hidden');
-            registerForm.classList.add('hidden');
+    if (!isLoggedIn) {
+        alert('Bạn cần đăng nhập để mua sản phẩm.');
+        authOverlay.classList.remove('hidden');
+        loginForm.classList.remove('hidden');
+        registerForm.classList.add('hidden');
+        return;
+    }
+
+    const productId = parseInt(event.target.dataset.productId);
+    const productItemElement = event.target.closest('.product-item');
+    const selectElement = productItemElement.querySelector('.size-price-select');
+    const selectedVariantIndex = parseInt(selectElement.value);
+
+    const product = products.find(p => p.id === productId);
+
+    if (product) {
+        // Kiểm tra nếu sản phẩm có liên kết Mua Ngay riêng
+        if (product.buyNowLink) {
+            alert('Sau khi đến trang Telegram, hãy nhắn tin để nhận sản phẩm.');
+            window.open(product.buyNowLink, '_blank');
+            showSection(homeSection, 'home');
             return;
         }
 
-        const productId = parseInt(event.target.dataset.productId);
-        const productItemElement = event.target.closest('.product-item');
-        const selectElement = productItemElement.querySelector('.size-price-select');
-        const selectedVariantIndex = parseInt(selectElement.value);
-
-        const product = products.find(p => p.id === productId);
-
-        if (product && product.variations && product.variations[selectedVariantIndex]) {
+        // Đoạn code cũ cho các sản phẩm còn lại
+        if (product.variations && product.variations[selectedVariantIndex]) {
             const selectedVariant = product.variations[selectedVariantIndex];
             const productCode = product.productCode;
             const productPrice = selectedVariant.price;
@@ -626,15 +638,9 @@ document.addEventListener('DOMContentLoaded', () => {
             // Tự động sao chép nội dung vào clipboard
             navigator.clipboard.writeText(copyText)
                 .then(() => {
-                    // Hiện thông báo sau khi sao chép thành công
                     alert('Sau khi đến trang Telegram hãy Dán nội dung và nhấn \' Gửi \'');
-                    
-                    // Tự động chuyển hướng đến Telegram
                     window.open('https://t.me/buffuytin', '_blank');
-                    
-                    // Quay về trang chủ (hoặc không làm gì cả, tùy ý)
                     showSection(homeSection, 'home');
-                    
                 })
                 .catch(err => {
                     console.error('Không thể tự động sao chép nội dung:', err);
@@ -643,6 +649,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
         }
     }
+}
 
     // === EVENT LISTENERS CHUNG ===
     if (categoriesGrid) {
