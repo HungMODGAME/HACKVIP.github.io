@@ -240,7 +240,7 @@ document.addEventListener('DOMContentLoaded', () => {
             id: 18,
             name: 'MENU IPA V1',
             category: 'FF',
-            buyNowLink: "https://t.me/FF_IOS_FREE_bot",
+            buyNowLink: "https://t.me/ffgameios_bot",
             image: 'https://i.imgur.com/ST8ndX1.jpeg',
             productCode: 'IPA FF V1',
             variations: [
@@ -251,7 +251,7 @@ document.addEventListener('DOMContentLoaded', () => {
             id: 19,
             name: 'MENU IPA V2',
             category: 'FF',
-            buyNowLink: "https://t.me/FF_IOS_FREE_bot",
+            buyNowLink: "https://t.me/ffgameios_bot",
             image: 'https://i.imgur.com/7CQSQO6.jpeg',
             productCode: 'IPA FF V2',
             variations: [
