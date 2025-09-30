@@ -338,6 +338,41 @@ document.addEventListener('DOMContentLoaded', () => {
                 { price: 0, label: 'ib giá cả và số lượng' },
             ]
         },
+        {
+            id: 28,
+            name: 'BR MODS Androi MOBILE',
+            category: 'panel',
+            image: 'https://i.imgur.com/XNxxlgs.jpeg',
+            productCode: 'BR Mods ADR',
+            variations: [
+                { price: 100000, label: '100,000VND - 4$ /1Day' },
+                { price: 260000, label: '260,000VND - 10$ /7Day' },
+                { price: 600000, label: '600,000VND - 23$ /30Day' },
+            ]
+        },
+        {
+            id: 29,
+            name: 'BR MODS PC + Bypass',
+            category: 'panel',
+            image: 'https://i.imgur.com/3YU3moV.jpeg',
+            productCode: 'BR Mods PC',
+            variations: [
+                { price: 130000, label: '130,000VND - 5$ /1Day' },
+                { price: 390000, label: '390,000VND - 15$ /10Day' },
+                { price: 790000, label: '790,000VND - 30$ /30Day' },
+            ]
+        },
+        {
+            id: 30,
+            name: 'Bypass',
+            category: 'panel',
+            image: 'https://i.imgur.com/QOw6nfF.jpeg',
+            productCode: 'Bypass',
+            variations: [
+                { price: 395000, label: '395,000VND - 15$ /30Day' },
+                { price: 1190000, label: '1,190,000VND - 45$ / Vĩnh Viễn - Forever' },
+            ]
+        },
     ];
 
     // === HÀM TIỆN ÍCH ===
