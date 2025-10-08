@@ -352,18 +352,42 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             id: 29,
+            name: 'BR MODS Androi MOBILE CRACK',
+            category: 'panel',
+            image: 'https://i.imgur.com/XNxxlgs.jpeg',
+            productCode: 'BR Mods ADR',
+            variations: [
+                { price: 120000, label: '120,000VND - 4,55$ /10Day' },
+                { price: 170000, label: '170,000VND - 6,45$ /15Day' },
+                { price: 320000, label: '320,000VND - 12,14$ /30Day' },
+            ]
+        },
+        {
+            id: 30,
             name: 'BR MODS PC + Bypass',
             category: 'panel',
             image: 'https://i.imgur.com/3YU3moV.jpeg',
             productCode: 'BR Mods PC',
             variations: [
-                { price: 130000, label: '130,000VND - 5$ /1Day' },
-                { price: 390000, label: '390,000VND - 15$ /10Day' },
-                { price: 790000, label: '790,000VND - 30$ /30Day' },
+                { price: 105000, label: '105,000VND - 4$ /1Day' },
+                { price: 345000, label: '345,000VND - 13$ /10Day' },
+                { price: 635000, label: '635,000VND - 23$ /30Day' },
             ]
         },
         {
-            id: 30,
+            id: 31,
+            name: 'BR MODS PC NO Bypass',
+            category: 'panel',
+            image: 'https://i.imgur.com/3YU3moV.jpeg',
+            productCode: 'BR Mods PC',
+            variations: [
+                { price: 105000, label: '105,000VND - 4$ /1Day' },
+                { price: 210000, label: '210,000VND - 8$ /10Day' },
+                { price: 395000, label: '395,000VND - 15$ /30Day' },
+            ]
+        },
+        {
+            id: 32,
             name: 'Bypass',
             category: 'panel',
             image: 'https://i.imgur.com/QOw6nfF.jpeg',
