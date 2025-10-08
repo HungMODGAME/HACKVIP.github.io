@@ -345,9 +345,10 @@ document.addEventListener('DOMContentLoaded', () => {
             image: 'https://i.imgur.com/XNxxlgs.jpeg',
             productCode: 'BR Mods ADR',
             variations: [
-                { price: 100000, label: '100,000VND - 4$ /1Day' },
-                { price: 260000, label: '260,000VND - 10$ /7Day' },
-                { price: 600000, label: '600,000VND - 23$ /30Day' },
+                { price: 65000, label: '65,000VND - 2,50$ /1Day' },
+                { price: 198000, label: '198,000VND - 7,50$ /7Day' },
+                { price: 250000, label: '250,000VND - 9,50$ /15Day' },
+                { price: 375000, label: '375,000VND - 14.30$ /30Day' },
             ]
         },
         {
