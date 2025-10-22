@@ -37,11 +37,12 @@ document.addEventListener('DOMContentLoaded', () => {
     let isLoggedIn = false;
     let currentUser = null; // { username: "...", password: "...", purchaseHistory: [] }
 
-    // --- DỮ LIỆU SẢN PHẨM ---
+    // --- DỮ LIỆU SẢN PHẨM (ĐÃ CHỈNH SỬA) ---
     const products = [
         {
             id: 1,
-            name: '[IOS-NONJB] HACK MAP LIÊN QUÂN MOBILE PHIÊN BẢN XÓA TỐ/PHANG BỤI',
+            name: '[IOS-NONJB] HACK MAP LIÊN QUÂN MOBILE', // Đã rút gọn tên
+            detail: 'Phiên bản XÓA TỐ/PHANG BỤI - Hỗ trợ Auto Múa Flo, Aim All Tướng.', // <<< THÊM MỤC CHI TIẾT
             category: 'clothing',
             image: 'https://i.imgur.com/o6wwhWq.jpeg',
             productCode: 'LQ IOS-VIP',
@@ -72,7 +73,8 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             id: 4,
-            name: '[IOS-NONJB] HACK MAP LIÊN QUÂN MOBILE PHIÊN BẢN ĐÁNH KÍN',
+            name: '[IOS-NONJB] HACK MAP LIÊN QUÂN MOBILE', // Đã rút gọn tên
+            detail: 'Phiên bản ĐÁNH KÍN - Giá rẻ cho học sinh sinh viên.', // <<< THÊM MỤC CHI TIẾT
             category: 'clothing',
             image: 'https://i.imgur.com/9v2Q4Rm.jpeg',
             productCode: 'LQ IOS-THƯỜNG',
@@ -340,7 +342,8 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             id: 28,
-            name: 'BR MODS Androi MOBILE',
+            name: '# MOBILE',
+            detail: ' <span style="font-size: 1.3em; color: blue;"><b> Root di động 64bit </b><br><span style="font-size: 1.1em; color: red;"><b> Memory </b><br><span style="font-size: 0.8em; color: black;">• SilentKill - Ngẫu nhiên Body	 và Đầu<br>• Toàn Đầu (⚠ Rủi ro)<br>• Speed Hack<br>• Ghost Hack<br>• Telekill<br>• Up Player<br><br><br><span style="font-size: 1.1em; color: red;"><b> ESP Player </b><br><span style="font-size: 0.9em; color: black;">• ESP Linha<br>• Hộp ESP<br>• Sức khỏe ESP<br><br>⚠️ Lưu ý:<br>Sản phẩm này chỉ hoạt động trên thiết bị có ROOT - 64bit .<br>❌Không hỗ trợ sử dụng trên máy ảo.<br>✅Hoạt động trên LD Cloud (phiên bản trả phí) .<br>➡️Bạn nên kiểm tra khả năng tương thích trước khi mua. ',
             category: 'panel',
             image: 'https://i.imgur.com/XNxxlgs.jpeg',
             productCode: 'BR Mods ADR',
@@ -353,7 +356,8 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             id: 29,
-            name: 'BR MODS Androi MOBILE CRACK',
+            name: '# MOBILE CRACK',
+            detail: ' <span style="font-size: 1.3em; color: blue;"><b> Root di động 64bit </b><br><span style="font-size: 1.1em; color: red;"><b> Memory </b><br><span style="font-size: 0.8em; color: black;">• SilentKill - Ngẫu nhiên Body	 và Đầu<br>• Toàn Đầu (⚠ Rủi ro)<br>• Speed Hack<br>• Ghost Hack<br>• Telekill<br>• Up Player<br><br><br><span style="font-size: 1.1em; color: red;"><b> ESP Player </b><br><span style="font-size: 0.9em; color: black;">• ESP Linha<br>• Hộp ESP<br>• Sức khỏe ESP<br><br>⚠️ Lưu ý:<br>Sản phẩm này chỉ hoạt động trên thiết bị có ROOT - 64bit .<br>❌Không hỗ trợ sử dụng trên máy ảo.<br>✅Hoạt động trên LD Cloud (phiên bản trả phí) .<br>➡️Bạn nên kiểm tra khả năng tương thích trước khi mua. ',
             category: 'panel',
             image: 'https://i.imgur.com/XNxxlgs.jpeg',
             productCode: 'BR Mods ADR',
@@ -365,7 +369,8 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             id: 30,
-            name: 'BR MODS PC + Bypass',
+            name: '# PC + Bypass',
+            detail: ' <span style="color: blue;"><b>• Bypass Emulado - Xếp hạng 50 người chơi<br></b><br><span style="font-size: 1.3em; color: red;"><b> Memory </b><span style="font-size: 0.8em; color: black;"><br>• Aimbot Ombro<br>• Aimbot Beta - ( An toàn / Band )<br>• Fov<br>• Số lượng đạn body/head<br>• Ghost Hack<br>• Under Player<br>• Tp Wall<br>• Wall Hack<br>• Speed Hack<br><br><span style="font-size: 1.3em; color: red;"><b> Esp Players </b><span style="font-size: 0.8em; color: black;"><br>• Hiển thị tên<br>• Hiển thị dây<br>• Hộp trưng hộp<br>• Hiển thị khoảng cách<br>• Hiển thị hp<br><br><span style="font-size: 1.3em; color: red;"><b> ESP Config </b><span style="font-size: 0.8em; color: black;"><br>• Màu ESP<br>• Vị trí dòng (Trên, Dưới) <br>• Tên Kích thước văn bản<br>• Khoảng cách Kích thước văn bản ',
             category: 'panel',
             image: 'https://i.imgur.com/3YU3moV.jpeg',
             productCode: 'BR Mods PC',
@@ -377,7 +382,8 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             id: 31,
-            name: 'BR MODS PC NO Bypass',
+            name: '# PC NO Bypass',
+            detail: ' <br><span style="font-size: 1.3em; color: red;"><b> Memory </b><span style="font-size: 0.8em; color: black;"><br>• Aimbot Ombro<br>• Aimbot Beta - ( An toàn / Band )<br>• Fov<br>• Số lượng đạn body/head<br>• Ghost Hack<br>• Under Player<br>• Tp Wall<br>• Wall Hack<br>• Speed Hack<br><br><span style="font-size: 1.3em; color: red;"><b> Esp Players </b><span style="font-size: 0.8em; color: black;"><br>• Hiển thị tên<br>• Hiển thị dây<br>• Hộp trưng hộp<br>• Hiển thị khoảng cách<br>• Hiển thị hp<br><br><span style="font-size: 1.3em; color: red;"><b> ESP Config </b><span style="font-size: 0.8em; color: black;"><br>• Màu ESP<br>• Vị trí dòng (Trên, Dưới) <br>• Tên Kích thước văn bản<br>• Khoảng cách Kích thước văn bản ',
             category: 'panel',
             image: 'https://i.imgur.com/3YU3moV.jpeg',
             productCode: 'BR Mods PC',
@@ -389,7 +395,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             id: 32,
-            name: 'Bypass',
+            name: '# Bypass',
             category: 'panel',
             image: 'https://i.imgur.com/QOw6nfF.jpeg',
             productCode: 'Bypass',
@@ -416,405 +422,392 @@ document.addEventListener('DOMContentLoaded', () => {
         userDropdownMenu && userDropdownMenu.classList.add('hidden');
     }
 
-    function showSection(sectionElement, sectionName, pushState = true) {
+    function showSection(section) {
         hideAllSections();
-        if (sectionElement) {
-            sectionElement.classList.remove('hidden');
-        }
-        if (pushState) {
-            history.pushState({ section: sectionName }, '', `#${sectionName}`);
-        } else {
-            history.replaceState({ section: sectionName }, '', `#${sectionName}`);
-        }
+        section && section.classList.remove('hidden');
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // === QUẢN LÝ NGƯỜI DÙNG VÀ ĐĂNG NHẬP ===
-    function loadUsers() {
-        const users = localStorage.getItem('users');
-        return users ? JSON.parse(users) : {};
-    }
-
-    function saveUsers(users) {
-        localStorage.setItem('users', JSON.stringify(users));
-    }
-
+    // --- HÀM TẢI VÀ LƯU TRẠNG THÁI NGƯỜI DÙNG ---
     function saveCurrentUser() {
-        if (currentUser) {
-            localStorage.setItem('currentUser', JSON.stringify(currentUser));
-        } else {
-            localStorage.removeItem('currentUser');
-        }
+        localStorage.setItem('currentUser', JSON.stringify(currentUser));
+        localStorage.setItem('isLoggedIn', isLoggedIn.toString());
     }
 
     function loadCurrentUser() {
-        const user = localStorage.getItem('currentUser');
-        if (user) {
-            currentUser = JSON.parse(user);
-            isLoggedIn = true;
-            updateUserUI();
-            return true;
+        const storedUser = localStorage.getItem('currentUser');
+        const storedLogin = localStorage.getItem('isLoggedIn');
+        if (storedUser) {
+            currentUser = JSON.parse(storedUser);
+            isLoggedIn = storedLogin === 'true';
         }
-        return false;
-    }
-
-    function registerUser(username, password) {
-        const users = loadUsers();
-        if (users[username]) {
-            alert('Tên đăng nhập đã tồn tại. Vui lòng chọn tên khác.');
-            return false;
-        }
-        users[username] = { password: password, purchaseHistory: [] };
-        saveUsers(users);
-        alert('Đăng ký thành công! Vui lòng đăng nhập.');
-        return true;
-    }
-
-    function loginUser(username, password) {
-        const users = loadUsers();
-        if (users[username] && users[username].password === password) {
-            currentUser = { username: username, purchaseHistory: users[username].purchaseHistory };
-            isLoggedIn = true;
-            saveCurrentUser();
-            alert('Đăng nhập thành công!');
-            updateUserUI();
-            showSection(homeSection, 'home');
-            return true;
-        }
-        alert('Tên đăng nhập hoặc mật khẩu không đúng.');
-        return false;
-    }
-
-    function logoutUser() {
-        isLoggedIn = false;
-        currentUser = null;
-        saveCurrentUser();
-        alert('Bạn đã đăng xuất.');
-        updateUserUI();
-        showSection(homeSection, 'home');
     }
 
     function updateUserUI() {
-        userDropdownMenu.innerHTML = ''; // Xóa menu cũ
+        const loginMenuItem = document.getElementById('menu-login');
+        const logoutMenuItem = document.getElementById('menu-logout');
+        const accountMenuItem = document.getElementById('menu-account');
+        const depositMenuItem = document.getElementById('menu-deposit');
 
-        // Thêm mục "Trang chủ" luôn hiển thị
-        const homeMenuItem = document.createElement('div');
-        homeMenuItem.classList.add('dropdown-item');
-        homeMenuItem.textContent = 'Trang chủ';
-        homeMenuItem.id = 'menu-home';
-        userDropdownMenu.appendChild(homeMenuItem);
-
-        if (isLoggedIn) {
-            const welcomeItem = document.createElement('div');
-            welcomeItem.classList.add('dropdown-item');
-            welcomeItem.textContent = `Chào mừng, ${currentUser.username}`;
-            userDropdownMenu.appendChild(welcomeItem);
-
-            const accountItem = document.createElement('div');
-            accountItem.classList.add('dropdown-item');
-            accountItem.textContent = 'Tài khoản của tôi';
-            accountItem.id = 'menu-account-info';
-            userDropdownMenu.appendChild(accountItem);
-
-            const logoutItem = document.createElement('div');
-            logoutItem.classList.add('dropdown-item');
-            logoutItem.textContent = 'Đăng xuất';
-            logoutItem.id = 'menu-logout';
-            userDropdownMenu.appendChild(logoutItem);
-
-            // Gắn event listener cho các mục mới
-            document.getElementById('menu-home').addEventListener('click', () => {
-                showSection(homeSection, 'home');
-            });
-            document.getElementById('menu-account-info').addEventListener('click', () => {
-                showSection(accountInfoSection, 'account-info-section');
-                renderAccountInfo();
-            });
-            document.getElementById('menu-logout').addEventListener('click', logoutUser);
-
+        if (isLoggedIn && currentUser) {
+            loginMenuItem.classList.add('hidden');
+            showRegisterBtn.classList.add('hidden');
+            logoutMenuItem.classList.remove('hidden');
+            accountMenuItem.classList.remove('hidden');
+            depositMenuItem.classList.remove('hidden');
         } else {
-            const loginItem = document.createElement('div');
-            loginItem.classList.add('dropdown-item');
-            loginItem.textContent = 'Đăng nhập';
-            loginItem.id = 'menu-login';
-            userDropdownMenu.appendChild(loginItem);
-
-            const registerItem = document.createElement('div');
-            registerItem.classList.add('dropdown-item');
-            registerItem.textContent = 'Đăng ký';
-            registerItem.id = 'menu-register';
-            userDropdownMenu.appendChild(registerItem);
-
-            // Gắn event listener cho các mục mới
-            document.getElementById('menu-home').addEventListener('click', () => {
-                showSection(homeSection, 'home');
-            });
-            document.getElementById('menu-login').addEventListener('click', () => {
-                authOverlay.classList.remove('hidden');
-                loginForm.classList.remove('hidden');
-                registerForm.classList.add('hidden');
-            });
-            document.getElementById('menu-register').addEventListener('click', () => {
-                authOverlay.classList.remove('hidden');
-                registerForm.classList.remove('hidden');
-                loginForm.classList.add('hidden');
-            });
+            loginMenuItem.classList.remove('hidden');
+            showRegisterBtn.classList.remove('hidden');
+            logoutMenuItem.classList.add('hidden');
+            accountMenuItem.classList.add('hidden');
+            depositMenuItem.classList.add('hidden');
         }
     }
 
-    function renderAccountInfo() {
-        if (currentUser && accountUsernameSpan && purchaseHistoryList) {
-            accountUsernameSpan.textContent = currentUser.username;
-            purchaseHistoryList.innerHTML = '';
-            if (currentUser.purchaseHistory && currentUser.purchaseHistory.length > 0) {
-                const sortedHistory = [...currentUser.purchaseHistory].sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
-
-                sortedHistory.forEach(order => {
-                    const orderDate = new Date(order.timestamp).toLocaleString('vi-VN', {
-                        year: 'numeric', month: '2-digit', day: '2-digit',
-                        hour: '2-digit', minute: '2-digit'
-                    });
-                    const orderItemHtml = `
-                        <div class="history-item">
-                            <p><strong>Mã đơn hàng:</strong> ${order.orderId}</p>
-                            <p><strong>Sản phẩm:</strong> ${order.items[0].name} (${order.items[0].variantLabel})</p>
-                            <p><strong>Tổng tiền:</strong> ${formatVND(order.total)}</p>
-                            <p class="date">Ngày: ${orderDate}</p>
-                        </div>
-                    `;
-                    purchaseHistoryList.innerHTML += orderItemHtml;
-                });
-            } else {
-                purchaseHistoryList.innerHTML = '<p>Bạn chưa có giao dịch nào.</p>';
-            }
-        }
-    }
-
-    // === HÀM LIÊN QUAN ĐẾN SẢN PHẨM ===
-    function displayProducts() {
-        if (!productList) return;
-
-        productList.innerHTML = '';
+    // === HÀM HIỂN THỊ SẢN PHẨM (ĐÃ CHỈNH SỬA) ===
+    function displayProducts(category = currentCategory) {
         const filteredProducts = products.filter(product => {
-            return (currentCategory === 'all' || product.category === currentCategory);
-        }).map(product => {
-            if (!product.variations && product.variances) { // Fallback cho lỗi chính tả cũ
-                product.variations = product.variances;
-                delete product.variances;
-            }
-            return product;
+            return category === 'all' || product.category === category;
         });
 
-        if (filteredProducts.length === 0) {
-            productList.innerHTML = '<p>Không tìm thấy sản phẩm nào trong danh mục này.</p>';
-            return;
-        }
+        const productHTML = filteredProducts.map(product => {
+            let variationsHTML = '';
+            let displayPrice = '';
+            let buyButtonHTML = '';
 
-        filteredProducts.forEach(product => {
-            const productItem = document.createElement('div');
-            productItem.classList.add('product-item');
-
-            let selectOptionsHtml = '';
+            // Handle variations (select box or single price)
             if (product.variations && product.variations.length > 0) {
-                product.variations.forEach((variant, index) => {
-                    selectOptionsHtml += `<option value="${index}">${variant.label}</option>`;
-                });
-            } else {
-                selectOptionsHtml += `<option value="0">Không có gói nào</option>`;
+                if (product.variations.length === 1 && product.variations[0].price === 0 && product.buyNowLink) {
+                    // Case: FREE product with Telegram link (ID 18, 19)
+                    displayPrice = `<div class="display-price">Miễn phí</div>`;
+                    buyButtonHTML = `<button class="buy-now-btn" data-buynow-link="${product.buyNowLink}">MUA NGAY</button>`;
+                } else {
+                    // Case: Standard product with variations
+                    const defaultPrice = product.variations[0].price;
+                    displayPrice = `<div class="display-price" data-initial-price="${defaultPrice}">${formatVND(defaultPrice)}</div>`;
+
+                    variationsHTML = `
+                        <select class="size-price-select" data-product-id="${product.id}">
+                            ${product.variations.map((v, index) => 
+                                `<option value="${v.price}" data-label="${v.label}">${v.label}</option>`
+                            ).join('')}
+                        </select>
+                    `;
+                    buyButtonHTML = `<button class="buy-now-btn" data-product-id="${product.id}">MUA NGAY</button>`;
+                }
+            } else if (product.buyNowLink) {
+                // Case: Product with only a buy now link (should not happen if variations handled correctly, but kept as fallback)
+                buyButtonHTML = `<button class="buy-now-btn" data-buynow-link="${product.buyNowLink}">MUA NGAY</button>`;
             }
 
-            const defaultPrice = (product.variations && product.variations.length > 0) ? product.variations[0].price : 0;
+            // Tạo HTML cho chi tiết sản phẩm
+            const productDetailHTML = product.detail ? `<p class="product-detail">${product.detail}</p>` : ''; // <<< DÒNG MỚI
 
-            productItem.innerHTML = `
-                <div class="product-code">${product.productCode}</div>
-                <img src="${product.image}" alt="${product.name}">
-                <h3>${product.name}</h3>
-                <label for="size-price-${product.id}" class="size-price-label">Chọn Gói:</label>
-                <select id="size-price-${product.id}" class="size-price-select" data-product-id="${product.id}">
-                    ${selectOptionsHtml}
-                </select>
-                <p class="display-price">${formatVND(defaultPrice)}</p>
-                <button class="buy-now-btn" data-product-id="${product.id}">Mua ngay</button>
+            return `
+                <div class="product-item" data-id="${product.id}">
+                    <span class="product-code">${product.productCode}</span>
+                    <img src="${product.image}" alt="${product.name}">
+                    <h3>${product.name}</h3>
+                    ${productDetailHTML}  <div class="variation-selector">
+                        ${variationsHTML}
+                    </div>
+                    ${displayPrice}
+                    ${buyButtonHTML}
+                </div>
             `;
-            productList.appendChild(productItem);
-        });
+        }).join('');
 
-        document.querySelectorAll('.size-price-select').forEach(select => {
-            select.addEventListener('change', updateDisplayedPrice);
-        });
-
-        document.querySelectorAll('.buy-now-btn').forEach(button => {
-            button.addEventListener('click', buyNow);
-        });
+        productList.innerHTML = productHTML;
+        productsSection.classList.remove('hidden');
     }
 
-    function updateDisplayedPrice(event) {
-        const selectElement = event.target;
-        const productId = parseInt(selectElement.dataset.productId);
-        const selectedVariantIndex = parseInt(selectElement.value);
+    // === HÀM XỬ LÝ SỰ KIỆN ===
 
-        const product = products.find(p => p.id === productId);
-        if (product && product.variations && product.variations[selectedVariantIndex]) {
-            const newPrice = product.variations[selectedVariantIndex].price;
-            const displayPriceElement = selectElement.closest('.product-item').querySelector('.display-price');
-            displayPriceElement && (displayPriceElement.textContent = formatVND(newPrice));
+    // Xử lý click trên Menu Hamburger
+    hamburgerMenuIcon.addEventListener('click', () => {
+        userDropdownMenu.classList.toggle('hidden');
+    });
+
+    // Xử lý click chọn danh mục
+    categoriesGrid && categoriesGrid.addEventListener('click', (e) => {
+        const categoryItem = e.target.closest('.category-item');
+        if (categoryItem) {
+            currentCategory = categoryItem.dataset.category;
+            window.location.hash = 'products-section';
+            displayProducts(currentCategory);
         }
-    }
+    });
 
-    function buyNow(event) {
-    if (!isLoggedIn) {
-        alert('Bạn cần đăng nhập để mua sản phẩm.');
-        authOverlay.classList.remove('hidden');
-        loginForm.classList.remove('hidden');
-        registerForm.classList.add('hidden');
-        return;
-    }
-
-    const productId = parseInt(event.target.dataset.productId);
-    const productItemElement = event.target.closest('.product-item');
-    const selectElement = productItemElement.querySelector('.size-price-select');
-    const selectedVariantIndex = parseInt(selectElement.value);
-
-    const product = products.find(p => p.id === productId);
-
-    if (product) {
-        // Kiểm tra nếu sản phẩm có liên kết Mua Ngay riêng
-        if (product.buyNowLink) {
-            alert('Sau khi đến trang Telegram, hãy nhắn tin để nhận sản phẩm.');
-            window.open(product.buyNowLink, '_blank');
-            showSection(homeSection, 'home');
-            return;
+    // Xử lý thay đổi biến thể (variation)
+    productList && productList.addEventListener('change', (e) => {
+        if (e.target.classList.contains('size-price-select')) {
+            const select = e.target;
+            const priceElement = select.closest('.product-item').querySelector('.display-price');
+            const selectedPrice = select.value;
+            priceElement.innerHTML = formatVND(selectedPrice);
         }
+    });
 
-        // Đoạn code cũ cho các sản phẩm còn lại
-        if (product.variations && product.variations[selectedVariantIndex]) {
-            const selectedVariant = product.variations[selectedVariantIndex];
-            const productCode = product.productCode;
-            const productPrice = selectedVariant.price;
+    // Xử lý click nút MUA NGAY
+    productList && productList.addEventListener('click', (e) => {
+        const buyBtn = e.target.closest('.buy-now-btn');
+        if (buyBtn) {
+            const productItem = buyBtn.closest('.product-item');
+            const productId = parseInt(productItem.dataset.id);
+            const product = products.find(p => p.id === productId);
 
-            // Tạo nội dung để sao chép
-            const copyText = `Mã sản phẩm: ${productCode}\nGiá sản phẩm: ${formatVND(productPrice)}`;
-
-            // Tự động sao chép nội dung vào clipboard
-            navigator.clipboard.writeText(copyText)
-                .then(() => {
-                    alert('Sau khi đến trang Telegram hãy Dán nội dung và nhấn \' Gửi \'');
-                    window.open('https://t.me/buffuytin', '_blank');
-                    showSection(homeSection, 'home');
-                })
-                .catch(err => {
-                    console.error('Không thể tự động sao chép nội dung:', err);
-                    alert('Có lỗi khi sao chép tự động. Vui lòng sao chép thủ công và chuyển đến trang Telegram.');
-                    window.open('https://t.me/buffuytin', '_blank');
-                });
-        }
-    }
-}
-
-    // === EVENT LISTENERS CHUNG ===
-    if (categoriesGrid) {
-        categoriesGrid.addEventListener('click', (event) => {
-            const targetButton = event.target.closest('.view-products-btn');
-            if (targetButton) {
-                const categoryItem = targetButton.closest('.category-item');
-                currentCategory = categoryItem.dataset.category;
-                showSection(productsSection, 'products-section');
-                displayProducts();
+            // Xử lý nút MUA NGAY với link trực tiếp (vd: Free Fire)
+            if (buyBtn.dataset.buynowLink) {
+                window.open(buyBtn.dataset.buynowLink, '_blank');
+                return;
             }
-        });
-    }
 
-    if (hamburgerMenuIcon) {
-        hamburgerMenuIcon.addEventListener('click', () => {
-            userDropdownMenu && userDropdownMenu.classList.toggle('hidden');
-        });
-    }
+            if (!product) return;
 
-    closeFormButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            authOverlay.classList.add('hidden');
-            loginForm.classList.add('hidden');
-            registerForm.classList.add('hidden');
+            // Xử lý mua hàng thông thường
+            const selectElement = productItem.querySelector('.size-price-select');
+            let selectedVariation = product.variations[0]; // Mặc định là variation đầu tiên
+
+            if (selectElement) {
+                const selectedOption = selectElement.options[selectElement.selectedIndex];
+                const selectedPrice = parseInt(selectedOption.value);
+                const selectedLabel = selectedOption.dataset.label;
+                selectedVariation = { price: selectedPrice, label: selectedLabel };
+            }
+
+            if (!isLoggedIn) {
+                alert('Vui lòng đăng nhập để thực hiện giao dịch!');
+                showLoginPopup();
+                return;
+            }
+
+            // Giả lập xử lý thanh toán và tạo lệnh
+            const orderAmount = selectedVariation.price;
+            const orderContent = `LUXURY${Date.now().toString().slice(-6)}`; // Mã chuyển khoản giả lập
+            const productName = product.name;
+            const productLabel = selectedVariation.label.split('/')[0].trim(); // Lấy phần giá
+
+            lastOrderDetailsForCopy = {
+                amount: orderAmount,
+                content: orderContent
+            };
+
+            // Hiển thị thông tin chuyển khoản
+            document.getElementById('product-name-info').textContent = productName;
+            document.getElementById('product-price-info').textContent = productLabel;
+            document.getElementById('transfer-amount').textContent = formatVND(orderAmount);
+            document.getElementById('transfer-content').textContent = orderContent;
+            
+            showSection(depositSection);
+            window.location.hash = 'deposit-section';
+        }
+    });
+
+    // Xử lý nút Copy trong phần nạp tiền
+    copyButtons.forEach(button => {
+        button.addEventListener('click', async (e) => {
+            const target = e.target.dataset.target;
+            const textToCopy = document.getElementById(target).textContent;
+
+            try {
+                await navigator.clipboard.writeText(textToCopy.trim());
+                button.textContent = 'Đã Sao Chép!';
+                setTimeout(() => {
+                    button.textContent = 'Sao Chép';
+                }, 1500);
+            } catch (err) {
+                console.error('Không thể sao chép:', err);
+                alert('Có lỗi khi sao chép. Vui lòng sao chép thủ công.');
+            }
         });
     });
 
-    if (showLoginBtn) {
-        showLoginBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            loginForm.classList.remove('hidden');
-            registerForm.classList.add('hidden');
-        });
+    // Xử lý nút "Đã chuyển tiền"
+    depositOkBtn && depositOkBtn.addEventListener('click', () => {
+        if (!lastOrderDetailsForCopy) {
+            alert('Không tìm thấy thông tin đơn hàng.');
+            return;
+        }
+
+        const { amount, content } = lastOrderDetailsForCopy;
+
+        // Giả lập thêm vào lịch sử mua hàng
+        if (currentUser) {
+            const now = new Date();
+            const dateString = now.toLocaleDateString('vi-VN') + ' ' + now.toLocaleTimeString('vi-VN');
+            const historyItem = {
+                product: document.getElementById('product-name-info').textContent,
+                price: amount,
+                content: content,
+                date: dateString
+            };
+            currentUser.purchaseHistory.push(historyItem);
+            saveCurrentUser();
+        }
+
+        alert(`Giao dịch ${content} đã được ghi nhận. Vui lòng đợi hệ thống xử lý trong vòng 5-10 phút.`);
+        
+        // Quay về trang chủ
+        window.location.hash = 'home';
+        showSection(homeSection);
+    });
+
+    // --- XỬ LÝ ĐĂNG NHẬP / ĐĂNG KÝ ---
+
+    function showLoginPopup() {
+        showSection(authOverlay);
+        loginForm.classList.remove('hidden');
+        registerForm.classList.add('hidden');
     }
 
-    if (showRegisterBtn) {
-        showRegisterBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            registerForm.classList.remove('hidden');
-            loginForm.classList.add('hidden');
-        });
+    function showRegisterPopup() {
+        showSection(authOverlay);
+        registerForm.classList.remove('hidden');
+        loginForm.classList.add('hidden');
     }
 
-    if (registerUserForm) {
-        registerUserForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const username = e.target.elements['register-username'].value.trim();
-            const password = e.target.elements['register-password'].value;
-            const confirmPassword = e.target.elements['register-confirm-password'].value;
+    showLoginBtn && showLoginBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        showLoginPopup();
+    });
 
-            if (password !== confirmPassword) {
-                alert('Mật khẩu xác nhận không khớp.');
-                return;
-            }
-            if (username.length < 3 || password.length < 6) {
-                alert('Tên đăng nhập phải có ít nhất 3 ký tự và mật khẩu phải có ít nhất 6 ký tự.');
-                return;
-            }
-            if (username.includes(' ')) {
-                alert('Tên đăng nhập không được chứa dấu cách.');
-                return;
-            }
+    showRegisterBtn && showRegisterBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        showRegisterPopup();
+    });
 
-            if (registerUser(username, password)) {
-                e.target.reset();
-                loginForm.classList.remove('hidden');
-                registerForm.classList.add('hidden');
-            }
+    // Xử lý chuyển đổi form
+    document.getElementById('show-register').addEventListener('click', (e) => {
+        e.preventDefault();
+        showRegisterPopup();
+    });
+
+    document.getElementById('show-login').addEventListener('click', (e) => {
+        e.preventDefault();
+        showLoginPopup();
+    });
+
+    closeFormButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            authOverlay.classList.add('hidden');
         });
-    }
+    });
+    
+    authOverlay && authOverlay.addEventListener('click', (e) => {
+        if (e.target.id === 'auth-overlay') {
+            authOverlay.classList.add('hidden');
+        }
+    });
 
-    if (loginUserForm) {
-        loginUserForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const username = e.target.elements['login-username'].value.trim();
-            const password = e.target.elements['login-password'].value;
+    // Giả lập Đăng ký
+    registerUserForm && registerUserForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const username = document.getElementById('register-username').value;
+        const password = document.getElementById('register-password').value;
+        const confirmPassword = document.getElementById('register-confirm-password').value;
 
-            if (loginUser(username, password)) {
-                e.target.reset();
+        if (password !== confirmPassword) {
+            alert('Xác nhận mật khẩu không khớp!');
+            return;
+        }
+
+        // Trong thực tế, bạn sẽ gửi dữ liệu này lên server.
+        // Giả lập lưu người dùng và đăng nhập ngay
+        currentUser = { username: username, password: password, purchaseHistory: [] };
+        isLoggedIn = true;
+        saveCurrentUser();
+        alert(`Đăng ký thành công cho tài khoản: ${username}`);
+        updateUserUI();
+        authOverlay.classList.add('hidden');
+    });
+
+    // Giả lập Đăng nhập
+    loginUserForm && loginUserForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const username = document.getElementById('login-username').value;
+        const password = document.getElementById('login-password').value;
+
+        // Giả lập kiểm tra (Trong thực tế phải kiểm tra với dữ liệu server)
+        const storedUser = localStorage.getItem('currentUser');
+        if (storedUser) {
+            const user = JSON.parse(storedUser);
+            if (user.username === username && user.password === password) {
+                currentUser = user;
+                isLoggedIn = true;
+                saveCurrentUser();
+                alert(`Chào mừng, ${username}!`);
+                updateUserUI();
                 authOverlay.classList.add('hidden');
+            } else {
+                alert('Tên đăng nhập hoặc mật khẩu không đúng!');
             }
-        });
+        } else if (username === 'test' && password === 'test') {
+            // Tài khoản demo mặc định nếu chưa có ai đăng ký
+            currentUser = { username: 'test', password: 'test', purchaseHistory: [] };
+            isLoggedIn = true;
+            saveCurrentUser();
+            alert(`Chào mừng, ${username}! (Tài khoản demo)`);
+            updateUserUI();
+            authOverlay.classList.add('hidden');
+        } else {
+             alert('Tên đăng nhập hoặc mật khẩu không đúng!');
+        }
+    });
+
+    // Xử lý Đăng xuất
+    logoutBtn && logoutBtn.addEventListener('click', () => {
+        isLoggedIn = false;
+        currentUser = null;
+        localStorage.removeItem('currentUser');
+        localStorage.removeItem('isLoggedIn');
+        updateUserUI();
+        window.location.hash = 'home';
+        showSection(homeSection);
+        alert('Bạn đã đăng xuất.');
+    });
+
+    // Hàm hiển thị thông tin tài khoản và lịch sử mua hàng
+    function renderAccountInfo() {
+        if (!isLoggedIn || !currentUser) {
+            showLoginPopup();
+            return;
+        }
+
+        accountUsernameSpan.textContent = currentUser.username;
+        purchaseHistoryList.innerHTML = ''; // Xóa nội dung cũ
+
+        if (currentUser.purchaseHistory && currentUser.purchaseHistory.length > 0) {
+            const reversedHistory = [...currentUser.purchaseHistory].reverse(); // Hiển thị đơn mới nhất trước
+            reversedHistory.forEach(item => {
+                const li = document.createElement('li');
+                li.classList.add('history-item');
+                li.innerHTML = `
+                    <strong>Sản phẩm:</strong> ${item.product} (${item.price ? formatVND(item.price) : '0đ'})<br>
+                    <strong>Mã giao dịch:</strong> ${item.content}<br>
+                    <span class="date">${item.date}</span>
+                `;
+                purchaseHistoryList.appendChild(li);
+            });
+        } else {
+            purchaseHistoryList.innerHTML = '<li class="history-item">Bạn chưa có giao dịch nào.</li>';
+        }
     }
 
-    if (logoutBtn) {
-        logoutBtn.addEventListener('click', logoutUser);
-    }
-
-    // === XỬ LÝ NÚT COPY THÔNG TIN NGÂN HÀNG ===
-    copyButtons.forEach(button => {
-        button.addEventListener('click', async (event) => {
-            const targetId = event.target.dataset.target;
-            const textToCopyElement = document.getElementById(targetId);
-            if (textToCopyElement) {
-                const textToCopy = textToCopyElement.textContent;
-                try {
-                    await navigator.clipboard.writeText(textToCopy);
-                    alert(`Đã sao chép "${textToCopy}" vào bộ nhớ tạm!`);
-                } catch (err) {
-                    console.error('Không thể sao chép:', err);
-                    alert('Có lỗi khi sao chép. Vui lòng sao chép thủ công.');
-                }
-            }
-        });
+    // Xử lý chuyển hướng từ menu dropdown
+    userDropdownMenu && userDropdownMenu.addEventListener('click', (e) => {
+        userDropdownMenu.classList.add('hidden');
+        if (e.target.id === 'menu-deposit') {
+            window.location.hash = 'deposit-section';
+            showSection(depositSection);
+        } else if (e.target.id === 'menu-account') {
+            window.location.hash = 'account-info-section';
+            showSection(accountInfoSection);
+            renderAccountInfo();
+        } else if (e.target.id === 'menu-login') {
+            showLoginPopup();
+        } else if (e.target.id === 'menu-logout') {
+            logoutBtn.click();
+        }
     });
 
 
@@ -848,6 +841,9 @@ document.addEventListener('DOMContentLoaded', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
+    // Xử lý khi có thay đổi hash (ví dụ: nút quay lại/tiến lên của trình duyệt)
+    window.addEventListener('hashchange', navigateToSectionFromHash);
+
     // Khởi tạo UI, tải trạng thái đăng nhập và xử lý hash khi tải trang
     loadCurrentUser();
     updateUserUI();
@@ -855,10 +851,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (window.location.hash) {
         navigateToSectionFromHash();
     } else {
-        showSection(homeSection, 'home', false);
+        showSection(homeSection);
     }
-
-    window.addEventListener('popstate', (event) => {
-        navigateToSectionFromHash();
-    });
 });

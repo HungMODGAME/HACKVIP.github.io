@@ -259,15 +259,25 @@ section {
     margin-bottom: 10px;
 }
 
-/* Cập nhật style cho tên sản phẩm để dễ nhìn, hiển thị đầy đủ và căn trái */
+/* CẬP NHẬT STYLE CHO TÊN SẢN PHẨM */
 .product-item h3 {
     margin-top: 5px;
-    margin-bottom: 15px;
+    margin-bottom: 5px; /* ĐÃ CHỈNH SỬA: Giảm margin-bottom để sát chi tiết */
     color: #333;
-    font-size: 1.2em; /* Giữ nguyên kích thước font để dễ nhìn */
-    font-weight: bold; /* Giữ nguyên độ đậm */
-    line-height: 1.4em; /* Giữ nguyên khoảng cách dòng để dễ đọc */
-    text-align: left; /* Căn chỉnh tên sản phẩm sang trái */
+    font-size: 1.2em;
+    font-weight: bold;
+    line-height: 1.4em;
+    text-align: left;
+}
+
+/* THÊM STYLE CHO CHI TIẾT SẢN PHẨM MỚI */
+.product-item .product-detail {
+    margin: 0 0 10px 0; /* Khoảng cách trên 0, dưới 10px */
+    padding: 0;
+    color: #777; /* Màu xám nhạt hơn */
+    font-size: 0.9em; /* Kích thước nhỏ hơn */
+    text-align: left; /* Căn lề trái */
+    line-height: 1.3;
 }
 
 .product-item .display-price {
@@ -540,243 +550,81 @@ section {
 
 /* --- DISCOUNT INPUT SECTION --- */
 .discount-input-section {
-    background-color: #e6f7ff; /* Light blue background */
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    background-color: #ffe0b2; /* Màu cam nhạt */
+    border: 1px solid #ffcc80;
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 8px;
     text-align: center;
-    margin-top: 30px;
-    margin-bottom: 20px;
-    border: 1px solid #cceeff;
 }
 
-.discount-input-section h2 {
-    color: #0056b3; /* Darker blue for heading */
-    margin-top: 0;
-    margin-bottom: 25px;
-    font-size: 1.8em;
-}
-
-.discount-form-group {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    flex-wrap: wrap; /* Allow wrapping on small screens */
-}
-
-#discount-code-input {
-    padding: 12px 15px;
-    border: 2px solid #007bff;
-    border-radius: 6px;
-    font-size: 1.1em;
-    width: 60%; /* Adjust width as needed */
-    max-width: 350px;
+.discount-input-section input[type="text"] {
+    width: calc(100% - 130px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
     box-sizing: border-box;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-#discount-code-input:focus {
-    border-color: #0056b3;
-    box-shadow: 0 0 8px rgba(0,123,255,0.3);
-    outline: none;
-}
-
-#apply-discount-btn {
-    background-color: #28a745; /* Green button */
+.discount-input-section button {
+    padding: 10px 20px;
+    background-color: #ff9800; /* Màu cam đậm */
     color: white;
     border: none;
-    padding: 12px 25px;
-    border-radius: 6px;
+    border-radius: 4px;
     cursor: pointer;
-    font-size: 1.1em;
-    font-weight: bold;
-    transition: background-color 0.3s ease, transform 0.1s ease;
-    white-space: nowrap; /* Prevent button text from wrapping */
+    transition: background-color 0.3s ease;
 }
 
-#apply-discount-btn:hover {
-    background-color: #218838;
-    transform: translateY(-2px);
+.discount-input-section button:hover {
+    background-color: #fb8c00;
 }
 
-#discount-message {
-    margin-top: 20px;
-    font-size: 1.1em;
-    font-weight: bold;
-    padding: 10px;
-    border-radius: 5px;
-}
-
-#discount-message.success {
-    color: #155724; /* Dark green for success */
-    background-color: #d4edda; /* Light green background */
-    border-color: #c3e6cb;
-}
-
-#discount-message.error {
-    color: #721c24; /* Dark red for error */
-    background-color: #f8d7da; /* Light red background */
-    border-color: #f5c6cb;
-}
-
-/* -- RESPONSIVE DESIGN -- */
-@media (max-width: 768px) {
-    header .container {
-        flex-direction: row; /* Giữ icon và tiêu đề trên cùng một hàng trên mobile */
-        justify-content: space-between; /* Icon ở một bên, tiêu đề ở giữa */
-        padding: 10px;
-    }
-
-    /* Điều chỉnh logo có ảnh và chữ trên mobile */
-    .header-logo-image {
-        height: 30px; /* Điều chỉnh kích thước logo nhỏ hơn trên mobile */
-        margin-right: 8px;
-    }
-    .header-text-logo .main-logo-text {
-        font-size: 1.6em; /* Điều chỉnh kích thước chữ nhỏ hơn trên mobile */
-        white-space: normal; /* Cho phép chữ xuống dòng */
-    }
-    .header-text-logo .tagline-text {
-        font-size: 0.7em; /* Điều chỉnh kích thước chữ nhỏ hơn nữa */
-        white-space: normal; /* Cho phép chữ xuống dòng */
-    }
-
-
-    #hamburger-menu-icon {
-        order: unset; /* Trả lại thứ tự bình thường */
-        margin-left: 0; /* Đảm bảo không có margin thừa */
-    }
-
-    /* Điều chỉnh vị trí dropdown trên màn hình nhỏ */
-    #user-dropdown-menu {
-        right: 2%; /* Điều chỉnh lại vị trí */
-        min-width: unset; /* Loại bỏ min-width cứng nhắc */
-        width: 96%; /* Chiếm gần hết chiều rộng màn hình */
-        top: 60px; /* Điều chỉnh vị trí nếu cần thiết */
-        left: 2%; /* Căn giữa trên màn hình nhỏ */
-        border-radius: 8px; /* Bo góc đầy đủ hơn */
-    }
-
-    .container {
-        width: 95%;
-    }
-    .categories-grid {
-        grid-template-columns: 1fr;
-    }
-    .product-grid {
-        grid-template-columns: 1fr;
-    }
-
-    /* Adjust for smaller screens for bank info */
-    .bank-info p {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    .bank-info p strong {
-        flex-basis: 30%;
-        min-width: 100px;
-    }
-    .bank-info p span {
-        text-align: left;
-        margin-right: 0;
-        margin-top: 5px;
-    }
-    .bank-info .copy-btn {
-        width: 100%;
-        margin-top: 10px;
-    }
-    /* Điều chỉnh form đăng nhập/đăng ký trên màn hình nhỏ */
-    .auth-form-container {
-        width: 95%;
-        padding: 20px;
-    }
-
-    /* Responsive adjustments for discount input */
-    .discount-input-section {
-        padding: 20px;
-    }
-    .discount-input-section h2 {
-        font-size: 1.5em;
-    }
-    .discount-form-group {
-        flex-direction: column;
-        align-items: center;
-    }
-    #discount-code-input {
-        width: 100%;
-        margin-bottom: 10px; /* Space between input and button */
-    }
-    #apply-discount-btn {
-        width: 100%;
-    }
-}
-
-/* -- FOOTER -- */
-footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 1rem 0;
-    margin-top: 30px;
-}
-
-/* --- Discount Modal Styles --- */
+/* --- ORDER SUCCESS MODAL --- */
 .modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7); /* Nền mờ */
+    background-color: rgba(0, 0, 0, 0.7);
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 300; /* Đảm bảo nằm trên tất cả, cao hơn auth-overlay */
-    animation: fadeIn 0.3s ease-out forwards;
+    z-index: 300;
 }
 
 .modal-content {
     background-color: #fff;
-    padding: 30px;
+    padding: 40px 30px;
     border-radius: 10px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-    width: 90%;
-    max-width: 450px;
+    max-width: 90%;
+    width: 500px;
     text-align: center;
     position: relative;
-    animation: slideIn 0.3s ease-out forwards;
-    transform: scale(0.9); /* Bắt đầu nhỏ hơn một chút */
-    transition: transform 0.3s ease-out;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.4);
 }
 
 .modal-content h2 {
-    color: #e44d26; /* Màu nổi bật cho tiêu đề */
+    color: #28a745;
     margin-top: 0;
-    margin-bottom: 20px;
     font-size: 1.8em;
 }
 
 .modal-content p {
+    margin: 15px 0;
     font-size: 1.1em;
     color: #555;
-    margin-bottom: 15px;
 }
 
-.discount-code-container {
-    background-color: #f0f8ff; /* Nền nhẹ cho mã giảm giá */
-    border: 2px dashed #007bff; /* Viền nét đứt */
-    padding: 15px 20px;
-    margin: 20px auto;
-    border-radius: 8px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    flex-wrap: wrap; /* Cho phép xuống dòng trên màn hình nhỏ */
-}
-
-#discount-code {
-    font-size: 1.6em;
+.transfer-code-display {
+    background-color: #e6ffe6; /* Nền xanh nhạt */
+    border: 1px dashed #28a745;
+    padding: 15px;
+    border-radius: 6px;
+    margin: 20px 0;
+    font-size: 1.2em;
     font-weight: bold;
     color: #28a745; /* Màu xanh lá nổi bật */
     user-select: all; /* Cho phép chọn toàn bộ văn bản */
@@ -818,30 +666,8 @@ footer {
     cursor: pointer;
     padding: 5px;
     line-height: 1;
-    transition: color 0.2s ease;
 }
 
 .close-modal-btn:hover {
     color: #333;
-}
-
-/* Responsive for modal */
-@media (max-width: 600px) {
-    .modal-content {
-        padding: 20px;
-    }
-    .modal-content h2 {
-        font-size: 1.5em;
-    }
-    #discount-code {
-        font-size: 1.3em;
-    }
-    .discount-code-container {
-        flex-direction: column; /* Xếp mã và nút xuống dòng trên mobile */
-        gap: 10px;
-    }
-    .modal-content .copy-btn {
-        width: 100%;
-        padding: 12px;
-    }
 }
