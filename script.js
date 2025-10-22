@@ -404,6 +404,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 { price: 1190000, label: '1,190,000VND - 45$ / Vĩnh Viễn - Forever' },
             ]
         },
+                {
+            id: 33,
+            name: 'Quân Đoàn <b>LUXURY•VIP✓</b>',
+            detail: ' <span style="font-size: 1.5em; color: red;"><b> ID: 3085462326 </b><br><span style="font-size: 1.3em; color: blue;"><b> Yêu Cầu </b><br><span style="font-size: 0.8em; color: black;">1. Đổi tên có ký tự: <b>LUX.</b><br>vd: LUX.abc<br>2. Ảnh Moco<br>3. Nền mặc định<br><br><span style="font-size: 1.3em; color: blue;"><b> Quyền Lợi </b><br><span style="font-size: 0.8em; color: black;">1. Được Kéo Rank Free. ',
+            category: 'qd',
+            image: 'https://i.imgur.com/T76leBd.jpeg',
+            productCode: 'LUXURY•VIP✓',
+            
+        },
     ];
 
     // === HÀM TIỆN ÍCH ===
