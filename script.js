@@ -413,6 +413,15 @@ document.addEventListener('DOMContentLoaded', () => {
             productCode: 'LUXURY•VIP✓',
             
         },
+        {
+            id: 34,
+            name: 'Dịch Vụ Free Fire',
+            detail: ' <span style="font-size: 1.9em; color: blue;"><b> Cày Thuê </b><br><span style="font-size: 1.3em; color: red;"><b> Rank Sinh Tồn </b><br><span style="font-size: 0.9em; color: black;"><br>- Nhận cày từ Kim Cương<br>Rank Kim Cương 100 điểm = 10K<br>Rank Huyền Thoại 100 điểm = 20K<br>Rank Cao Thủ 100 điểm = 30K<br>Rank Thách Đấu 100 điểm = 40K<br>----------------------------------<br>Leo Thách Đấu Đầu Mùa 100 điểm = 50K<br><span style="font-size: 1.3em; color: red;"><b> Rank Tử Chiến </b><br><span style="font-size: 0.9em; color: black;"><br>2k = 1⭐<br><br><span style="font-size: 1.3em; color: blue;"><b> Kéo Thuê </b><span style="font-size: 0.6em; color: black;"><br>- Nhận cày từ Kim Cương<br>Rank Kim Cương 100 điểm = 15K<br>Rank Huyền Thoại 100 điểm = 25K<br>Rank Cao Thủ 100 điểm = 35K<br>Rank Thách Đấu 100 điểm = 45K<br>----------------------------------<br>Leo Thách Đấu Đầu Mùa 100 điểm = 60K<br><span style="font-size: 1.3em; color: red;"><b> Rank Tử Chiến </b><br><span style="font-size: 0.6em; color: black;">4K = 1⭐<br>10K = 3⭐<br> ',
+            category: 'dv',
+            image: 'https://i.imgur.com/NiZuiFJ.jpeg',
+            productCode: 'RANK',
+
+        },
     ];
 
     // === HÀM TIỆN ÍCH ===
